@@ -307,7 +307,7 @@ th, td, tr {
 /*.userenrolment .col_lastseen { min-width: 70px; }*/
 /*.userenrolment .col_enrol { min-width: 120px; }*/
 .userenrolment .col_group .group { padding-left: 0; margin-left: 0; }
-
+.userenrolment .subheading_idnumber { display:block; }
 
 .enrolpanel { background: transparent; }
 
