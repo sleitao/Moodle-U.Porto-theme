@@ -1,1 +1,1 @@
-Place folder "up" in theme/ folder.
+Place folders in theme/ folder.
