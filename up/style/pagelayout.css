@@ -1,0 +1,790 @@
+/*@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);*/
+
+/*  ======================
+	LOAD FONTS
+	====================== */
+
+
+	@font-face {
+	    font-family: 'DroidSerifRegular';
+	    src: url('up/fonts/DroidSerif-Regular-webfont.eot');
+	    src: url('up/fonts/DroidSerif-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+	         url('up/fonts/DroidSerif-Regular-webfont.woff') format('woff'),
+	         url('up/fonts/DroidSerif-Regular-webfont.ttf') format('truetype'),
+	         url(up/fonts/'DroidSerif-Regular-webfont.svg#DroidSerifRegular') format('svg');
+	    font-weight: normal;
+	    font-style: normal;
+
+	}
+
+	@font-face {
+	    font-family: 'DroidSerifItalic';
+	    src: url('up/fonts/DroidSerif-Italic-webfont.eot');
+	    src: url('up/fonts/DroidSerif-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+	         url('up/fonts/DroidSerif-Italic-webfont.woff') format('woff'),
+	         url('up/fonts/DroidSerif-Italic-webfont.ttf') format('truetype'),
+	         url('up/fonts/DroidSerif-Italic-webfont.svg#DroidSerifItalic') format('svg');
+	    font-weight: normal;
+	    font-style: italic;
+
+	}
+
+	@font-face {
+	    font-family: 'DroidSerifBold';
+	    src: url('up/fonts/DroidSerif-Bold-webfont.eot');
+	    src: url('up/fonts/DroidSerif-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+	         url('up/fonts/DroidSerif-Bold-webfont.woff') format('woff'),
+	         url('up/fonts/DroidSerif-Bold-webfont.ttf') format('truetype'),
+	         url('up/fonts/DroidSerif-Bold-webfont.svg#DroidSerifBold') format('svg');
+	    font-weight: bold;
+	    font-style: normal;
+
+	}
+
+	@font-face {
+	    font-family: 'DroidSerifBoldItalic';
+	    src: url('up/fonts/DroidSerif-BoldItalic-webfont.eot');
+	    src: url('up/fonts/DroidSerif-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+	         url('up/fonts/DroidSerif-BoldItalic-webfont.woff') format('woff'),
+	         url('up/fonts/DroidSerif-BoldItalic-webfont.ttf') format('truetype'),
+	         url('up/fonts/DroidSerif-BoldItalic-webfont.svg#DroidSerifBoldItalic') format('svg');
+	    font-weight: bold;
+	    font-style: italic;
+
+	}
+
+	@font-face {
+	    font-family: 'PT Sans Narrow';
+	    src: url('up/fonts/pt_sans-narrow-web-bold-webfont.eot');
+	    src: url('up/fonts/pt_sans-narrow-web-bold-webfont.eot?#iefix') format('embedded-opentype'),
+	         url('up/fonts/pt_sans-narrow-web-bold-webfont.woff') format('woff'),
+	         url('up/fonts/pt_sans-narrow-web-bold-webfont.ttf') format('truetype'),
+	         url('up/fonts/pt_sans-narrow-web-bold-webfont.svg#') format('svg');
+	    font-weight: bold;
+	    font-style: normal;
+
+	}
+
+	@font-face {
+	    font-family: 'PT Sans Narrow';
+	    src: url('up/fonts/pt_sans-narrow-web-regular-webfont.eot');
+	    src: url('fonts/pt_sans-narrow-web-regular-webfont.eot?#iefix') format('embedded-opentype'),
+	         url('up/fonts/pt_sans-narrow-web-regular-webfont.woff') format('woff'),
+	         url('up/fonts/pt_sans-narrow-web-regular-webfont.ttf') format('truetype'),
+	         url('up/fonts/pt_sans-narrow-web-regular-webfont.svg#PTSansNarrowRegular') format('svg');
+	    font-weight: normal;
+	    font-style: normal;
+
+	}
+
+/****
+ * Three column floating div layout with 2,1,3 column order
+ * Based on: http://matthewjamestaylor.com/blog/holy-grail-no-quirks-mode.htm
+ * And:  http://matthewjamestaylor.com/blog/ultimate-3-column-holy-grail-pixels.htm
+ *
+ * #page
+ *   #page-header
+ *   #page-content
+ *   |  #region-main-box
+ *   |    #region-post-box
+ *   |      #region-main-wrap
+ *   |      |  #region-main
+ *   |      |    .region-content
+ *   |      #region-pre
+ *   |      |  .region-content
+ *   |      #region-post
+ *   |      |  .region-content
+ *   #page-footer
+ *
+ * The body tag may also contain one of three layout specific classes that describe
+ * the regions of the page and allow us to theme more easily.
+ *
+ *   default (no class) = Content + side pre + side post
+ *   side-pre-only      = Content + side pre
+ *   side-post-only     = Content + side post
+ *   content-only       = Content
+ *
+ ***/
+
+ html {
+  	background-color: transparent;
+ }
+
+ body {
+	margin: 0;
+	background-color: #f7f7f7;
+	font: normal 100% Cambria, Georgia, serif;
+ }
+
+abbr {
+	text-decoration: none;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+ /*
+h1, h2, h3, h4, h5, h6 {
+	text-transform: uppercase;
+}
+
+/*  */
+
+.skiplinks,
+#dock,
+.accesshide,
+.skip-block { display: none;}
+
+
+/* prevent .block_navigation from flashing */
+.jsenabled #region-post .block_navigation {
+/* 	display: none !important; */
+}
+
+/* "fix" the box model */
+
+* {
+-webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+     -o-box-sizing: border-box;
+        box-sizing: border-box; }
+
+
+/* ++ CABEÇALHO ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+#page-header-wrap {
+ 	background: #857040;
+ 	background: -webkit-linear-gradient(45deg, #6e5d35, #9c834b);
+ 	overflow: hidden;
+ 	border-bottom: 2px solid #444;
+ 	min-width: 1140px;
+}
+#page-header {
+ 	width: 1140px;
+	margin: 0 auto;
+	color: #fff;
+}
+.headermain {
+	float: left;
+	height: 75px; /* colocar imagem */
+}
+
+.headermain {
+	margin: 0;
+	float: left;
+}
+.headermain a {
+	border: none;
+}
+.headermain a:hover {
+	background: none;
+	border: none;
+}
+#login-info-wrap {
+	float: right;
+	text-align: right;
+	margin: 15px 0 0 0;
+}
+.notloggedin #login-info-wrap {
+/* 	margin: 15px 20px 0 0; */
+}
+
+.logininfo a,
+.logininfo a:visited { color: #fff; border-bottom-color: #444; text-decoration: underline;
+}
+.logininfo a:hover { color: #222; background: inherit; }
+
+
+.notloggedin .langmenu {
+	clear: none;
+/* 	margin: 15px 20px 0 0; */
+}
+/* header login */
+
+.block_login { display: none; } /* remove login from sidebar */
+#header-login {
+	float: right;
+/*	width: 200px;*/
+	padding: 10px 5px;
+}
+/*#header-login #login { width: 200px; }*/
+#header-login .header h2 {
+	font-family: 'PT Sans Narrow', Tahoma, sans-serif;
+	font-size: 20px;
+	margin: 5px 0;
+	border-bottom: 2px solid #fff;
+	display: none;
+}
+#header-login .loginform { float: left; }
+#header-login .loginform .fld { text-align: right; }
+#header-login .loginform .fld input { border: 1px solid #857040; padding: 2px; }
+#header-login .loginform label { margin-right: 5px; }
+#header-login .loginform .rememberusername { text-align: right; }
+#header-login .loginform .rememberusername #rememberusername { margin-right: 6px; }
+#header-login .loginform .btn { margin-top: 5px; float: right; }
+#header-login .loginform input[type=submit] { background: #7a663a; color: #fff; text-shadow: none; }
+#header-login .loginform input[type=submit]:hover { background: #857040; }
+#header-login .loginform input[type=submit]:active { box-shadow: inset 0 0 4px 2px #444; }
+#header-login .footer {
+	clear: both;
+	top: -24px;
+	left: 68px;
+	position: relative;
+}
+#header-login .footer > div {
+	float: left;
+}
+#header-login .footer a { font-size: 0.9em; color: #444; }
+#header-login .footer a:visited { color: #57492a; }
+#header-login .footer a:hover { color: #fff; background: inherit; }
+#header-login .footer a:active { background: #857040; }
+
+.headermenu {
+    float: right;
+    font-size: 0.8em;
+    margin: 10px;
+    text-align: right;
+}
+
+.headermenu a {
+    font-weight: bold;
+}
+
+/* Breadcrumb */
+
+.navbar {
+	overflow: hidden;
+}
+.breadcrumb {
+	font-size: 13px;
+	font-family: "PT Sans Narrow", sans-serif;
+	text-transform: uppercase;
+	padding: 5px 20px 2px;
+	float: left;
+	color: #666;
+}
+.breadcrumb a:visited { color: #857040; }
+.breadcrumb a:hover { color: #666; }
+.breadcrumb a:active { color: #fff; }
+.breadcrumb ul {
+	margin: 0;
+}
+
+.breadcrumb li {
+	list-style-type: none;
+    display: inline;
+}
+
+.breadcrumb li:last-child a {
+/*	font-weight: bold;*/
+}
+
+.navbutton {
+	float: right;
+}
+.navbutton table {	margin: 0; }
+.navbutton th, .navbutton td {	padding: 0; }
+
+.navbutton fieldset {
+	margin-bottom: 0;
+}
+.navbutton .helplink a {
+/*	margin: 7px 5px 0 0;*/
+/*	float: left;*/
+}
+
+
+/* ++ MENU +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+#page {
+	margin: 0 auto;
+	font: normal 13px/1.8 'Droid Serif', Georgia, serif;
+	font-weight: normal;
+	color: #444;
+}
+
+#page-content {
+	width: 1140px;
+	margin: 20px auto 0;
+	clear: both;
+}
+#page-content #region-main-box {
+	clear: both;
+}
+#page-content #region-post-box {
+
+}
+
+#page-content #region-main-wrap {
+	float: left;
+	margin: 0 20px 20px 0;
+	background-color: #fff;
+	-moz-box-shadow: 0 0 4px #aaa;
+	-webkit-box-shadow: 0 0 4px #aaa;
+	box-shadow: 0 0 4px #aaa;
+	width: 900px;
+}
+#page-content #region-main {
+	padding: 0 0 10px 20px;
+	width: 660px;
+	float: left;
+}
+#page-content #region-pre {
+	width: 220px;
+	float: left;
+	margin: 0;
+}
+#page-content #region-post {
+	width: 220px;
+	float: left;
+}
+/*if no sidebar */
+/*.side-pre-only #page-content #region-main-wrap { width: 1100px; }*/
+/*.side-pre-only #page-content #region-main { width: 880px; }*/
+
+.no-sidebar #page-content #region-main-wrap {
+	width: 1140px;
+}
+.no-sidebar #page-content #region-main {
+	width: 900px;
+}
+
+/* FRONT PAGE */
+.pagelayout-frontpage #page-content #region-main { width: auto;  }
+.pagelayout-frontpage #page-content #region-content { margin-right: 0; }
+
+#frontpage-content {
+	width: 640px;
+	float: left;
+}
+#frontpage-content > .frontblock {
+	border-bottom: 2px solid #857040;
+	overflow: hidden;
+	padding-bottom: 20px;
+	margin-right: 20px;
+}
+
+#frontpage-content > .frontblock:last-child { border: none; }
+#uni { float: right; }
+#uni h2 { border-bottom: 2px solid #857040; }
+#uni ul { margin: 0; }
+#uni .list .icon {
+	float: left;
+	display: none;
+}
+#uni .list li {
+	list-style-type: none;
+	border-bottom: 1px solid #e5e5e5;
+}
+#uni .list li a {
+	color: #444;
+	border: none;
+}
+#uni .list li a:hover {
+	color: #857040;
+}
+
+/* login page */
+
+#page-login-index #page-content #region-main #region-main,
+#page-login-index #page-content #region-main-wrap,
+#page-login-index #page-content #region-main {
+	width: 100%;
+}
+#page-login-index #page-content #region-main {
+	padding-right: 20px;
+}
+#page-login-forgot_password form {
+	margin-top: 20px;
+}
+#page-login-forgot_password .mform .ftoggler {
+	font-family: "PT Sans Narrow", sans-serif;
+	font-size: 16px;
+	border-bottom-color: #999;
+}
+#page-login-forgot_password .mform .fitem .felement.fsubmit {
+	margin-left: 180px;
+}
+#page-login-forgot_password .mform fieldset.clearfix {
+	border: none;
+}
+.loginbox,
+.loginbox.twocolumns {
+	margin: 0;
+}
+
+.loginbox.twocolumns .signuppanel,
+.loginbox.twocolumns .loginpanel {
+/*	float: left;*/
+/*	width: 49.5%;*/
+	border-right: none;
+/*	margin-bottom: 0;*/
+/*	padding-bottom: 0;*/
+}
+.loginbox.twocolumns .signuppanel {
+	float: left;
+}
+.loginbox.twocolumns .signuppanel .signuppanel {
+	width: 100%;
+}
+
+.loginbox.twocolumns .loginpanel {
+/*	padding-bottom: 2040px;*/
+}
+.loginbox .guestsub,
+.loginbox .forgotsub,
+.loginbox .potentialidps {
+	margin: 0;
+	padding: 0;
+}
+.loginbox .potentialidps .potentialidplist {
+	margin: 0 0 0 0;
+}
+.loginbox h2,
+.loginbox .subcontent {
+	margin: 0;
+	padding: 0;
+/*	overflow: auto;*/
+	text-align: left;;
+}
+.loginpanel .loginform {
+	margin-top: 10px;
+}
+.loginpanel, .signuppanel {
+	float: left;
+}
+.loginpanel {
+	width: 40%;
+}
+.loginpanel #rememberusername {
+	float: left;
+	margin: 6px 6px 0 0;
+}
+.loginbox .loginform .form-label,
+.loginbox .loginform .form-input {
+	float: none;
+	text-align: left;
+	width: auto;
+}
+.loginbox .loginform .form-input input {
+	width: auto;
+}
+.loginpanel label[for=rememberusername] {
+	float: left;
+}
+.loginpanel .subcontent {
+	margin-top: 20px;
+}
+.signuppanel {
+	width: 58%;
+}
+
+/* ONLINE USERS BLOCK */
+.block_online_users ul.list li {
+    list-style-type: none;
+}
+
+.block_online_users ul.list {
+    margin: 0px;
+}
+
+.block_online_users ul.list img.userpicture {
+    margin-right: 5px;
+}
+
+/* TABLES — WIDTH */
+table.generalbox {
+width: 73.5%;
+}
+
+/* DIV WIDTHS */
+#intro.generalbox, .path-mod-choice .results.names .user, .path-mod-choice #yourselection {
+padding: 10px;
+}
+
+/* SETTINGS MENU */
+
+#region-main-wrap .block_settings hr {
+	display: none;
+}
+#region-main-wrap .block_settings {
+	float: right;
+	width: 220px;
+	padding: 0;
+	box-shadow: none;
+	margin-right: -2px;
+	border-right: 1px solid #aaa;
+	box-shadow: 6px 0 5px -5px #aaa;
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	background: #fff;
+}
+#region-main-wrap .block_settings .block_tree {
+	padding: 0;
+	margin: 0;
+}
+
+#region-main-wrap .block_settings .block_tree > li > ul {
+	padding: 0;
+}
+#region-main-wrap .block_settings ul li:last-child {
+	margin-bottom: 10px;
+	border-right: none;
+}
+
+#region-main-wrap .block_settings li {
+	line-height: 1;
+	list-style-type: none;
+}
+#region-main-wrap .block_settings .root_node {
+	margin: 0;
+	padding: 0;
+	font: normal 15px 'PT Sans Narrow', Tahoma, sans-serif;
+	text-transform: uppercase;
+	background: #f7f7f7;
+	color: #666;
+	letter-spacing: 1px;
+	border-bottom: 1px solid #666;
+	padding: 6px 5px 2px;
+}
+
+#region-main-wrap .block_settings ul ul { border-top: 1px solid #ccc; }
+#region-main-wrap .block_settings ul > li {
+	line-height: 1.4;
+	border-bottom: 1px solid #ccc;
+}
+#region-main-wrap .block_settings ul > li:last-child { margin: 0; }
+
+/* ===== HOMEPAGE ===== */
+
+.pagelayout-frontpage #page-content #region-main {
+	padding: 0;
+}
+#page-site-index #page-content #region-main-wrap {
+/*	width: 76%;
+	margin-right: 2%;*/
+}
+#page-site-index #page-content #region-post {
+/*	width: 22%;*/
+}
+
+.bx-wrapper {
+	margin-bottom: 20px;
+	width: 100% ;
+}
+.bx-window, #slider1, #slider1 li {
+	width: 100% ;
+	height: 400px;
+}
+
+.bx-pager {
+    float: left;
+    float: left;
+    font-size: 16px;
+    margin-left: 25px;
+    margin-top: -50px;
+    position: relative;
+    z-index: 100;
+}
+
+.bx-pager .pager-link {
+    background-color: white;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 0 3px #CCCCCC;
+    margin: 2px;
+    padding: 5px;
+
+}.bx-pager .pager-active{
+    color: black;
+}
+
+
+.welcome {
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	padding: 10px;
+	background: url([[pix:theme|bg]]) right no-repeat;
+	box-shadow:	inset 0 0 30px 5px #E5E9EA, 0 0 3px #ccc, 0 0 3px #ccc;
+        height: 400px;
+}
+.welcome img {
+	float: right;
+	border-radius: 2px;
+}
+.region-content .welcome h2 {
+	font: bold 44px "PT Sans Narrow", Verdana, sans-serif;
+	text-transform: uppercase;
+	margin: 40px 0 20px 15px;
+	line-height: 1.1;
+	width: 430px;
+	}
+.region-content .welcome h2.white {
+	color: white;
+}
+.region-content .welcome h2.black {
+        color: black;
+}
+.region-content .welcome h3 {
+	font-size: 20px;
+	margin: 0;
+	width: 400px;
+	margin-bottom: 10px;
+        margin-left: 15px;
+}
+.region-content .welcome h3 a span {
+        background-color: white;
+        padding: 0 2px;
+}
+
+.region-content .welcome h3.white {
+        color: white;
+}
+.region-content .welcome h3.black {
+        color: black;
+}
+
+
+.frontbloc {
+	float: left;
+	width: 31%;
+	margin-left: 2%;
+}
+/*.frontbloc:first-child { margin-left: 2%; }*/
+.frontbloc:last-child { margin-right: 0; }
+
+.frontbloc a {
+	text-decoration: underline;
+}
+
+.pagelayout-frontpage .frontbloc h4 {
+	font: normal 20px "PT Sans Narrow", Verdana, sans-serif;
+	text-transform: uppercase;
+	margin-bottom: 10px;
+}
+.pagelayout-frontpage .highlight {
+	min-height: 100px;
+	background: #f0f0f0;
+	box-shadow:	inset 0 0 30px 5px #E5D5CF, 0 0 3px #ccc;
+	border: 5px solid #fff;
+	border-radius: 2px;
+	-moz-transition: box-shadow, background 1s ease;
+	-webkit-transition: box-shadow, background 1s ease;
+	transition: box-shadow, background 1s ease;
+}
+.pagelayout-frontpage .highlight:hover {
+	box-shadow:	inset 0 0 30px 5px #E5C0B3, 0 0 3px #ccc;
+	background: #E5D5CF;
+	-moz-transition: box-shadow, background 1s ease;
+	-webkit-transition: box-shadow, background 1s ease;
+	transition: box-shadow, background 1s ease;
+}
+.pagelayout-frontpage .highlight h4 {
+	font: bold 20px "PT Sans Narrow", Verdana, sans-serif;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+}
+.pagelayout-frontpage .highlight p {
+	font-size: 16px;
+}
+
+
+/* ===== FOOTER ===== */
+
+#page-footer-wrapper {
+	background: #fff;
+	min-width: 1140px;
+	clear: both;
+	border-top: 1px solid #ddd;
+	padding: 20px 0;
+	background: -webkit-linear-gradient(90deg, #fff, #f5f5f5);
+}
+#page-footer-wrapper:after { visibility: hidden; display: block; content: ""; clear: both; height: 0; }
+
+#page-footer {
+ 	width: 1140px;
+	margin: 0 auto;
+	padding-left: 20px;
+	clear: both;
+	text-align: left;
+	font-size: 13px;
+}
+#page-footer .logininfo {
+	margin-top: 20px;
+	color: #444;
+	border: none;
+}
+#page-footer .logininfo a {
+	color: #857040;
+}
+.footer-item {
+	width: 20%;
+	float: left;
+	margin-right: 2%;
+}
+.footer-item:last-child {
+	margin-right: 0;
+}
+.footer-item h5 {
+	font: normal 20px "PT Sans Narrow", Verdana, sans-serif;
+	text-transform: uppercase;
+}
+.footer-item ul {
+	margin: 0;
+}
+.footer-item ul li {
+	list-style-type: none;
+	line-height: 1.4;
+}
+.site-info {
+/*	width: 290px;*/
+}
+.site-info img {
+	width: 80%;
+	margin-bottom: 10px;
+}
+.site-info p {
+	font-size: 12px;
+	line-height: 1.4;
+}
+.social {
+	width: 120px;
+	margin-bottom: 5px;
+}
+
+.social li {
+	float: left;
+}
+.social li a {
+	float: left;
+	margin-right: 10px;
+	border-radius: 2px;
+	background: #444;
+	width: 20px;
+	height: 20px;
+	-webkit-transition: background 1s ease;
+	-webkit-transition: background 1s ease;
+	-webkit-transition: background 1s ease;
+
+}
+.social li a:hover {
+	background: aqua;
+	-webkit-transition: background 1s ease;
+	-moz-transition: background 1s ease;
+	transition: background 1s ease;
+}
+.social .facebook a:hover { background: #27649B; }
+.social .linkedin a:hover { background: #4393BB; }
+.social .delicious a:hover { background: #407ACC; }
+
+
+/* ===== IE ====== */
+
+.ie8 #page-content #region-main-wrap {
+	border: 1px solid #ddd;
+}
+.ie8 .block {
+	border: 1px solid #ddd;
+}

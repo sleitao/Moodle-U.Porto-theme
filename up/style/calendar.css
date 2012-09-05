@@ -1,0 +1,20 @@
+/* CALENDAR BLOCK */
+
+.minicalendar {
+	margin-top: 10px;
+	border-bottom: 2px solid #444;
+}
+.minicalendar th,
+.minicalendar td  {
+	padding: 2px 2px;
+}
+.minicalendar .weekdays {
+	font: normal 16px 'PT Sans Narrow', Tahoma, sans-serif;
+	color: #fff;
+	background: #444;
+}
+.minicalendar .weekdays th { width: 28px; }
+.minicalendar .weekdays abbr { float: left; border-bottom-color: #fff; }
+.minicalendar .weekend { background: #f7f7f7; }
+.minicalendar .today { background: #d64d25; }
+.minicalendar .today a { color: #fff; }

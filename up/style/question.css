@@ -1,0 +1,269 @@
+#page-mod-quiz-view .quizinfo, #page-mod-quiz-view #page .quizgradefeedback, #page-mod-quiz-view #page .quizattempt {
+	text-align:left;
+
+}
+
+#page-mod-quiz-view .generaltable.quizattemptsummary {
+	width: 100%;
+
+}
+
+#page-mod-quiz-view .generalbox#feedback {
+	width: 100%;
+
+}
+.que {
+	border-bottom: 1px solid #999;
+	padding-bottom: 20px;
+	overflow: hidden;
+}
+.que .formulation {
+	background-color: transparent;
+	margin: 0px;
+
+}
+
+.que .formulation, .que .outcome, .que .comment, .que .history {
+	margin: 0px;
+	padding: 0px;
+}
+
+.que .qtext {
+	overflow: auto;
+	border-bottom: 1px dotted #ccc;
+}
+.que h2.no, .que span.qno {
+	font-family: "PT Sans Narrow", sans-serif;
+	font-size: 15px;
+}
+
+.que .ablock .answer input{
+	margin-right: 5px;
+}
+.que .ablock .answer .r1 {
+	background: #f5f5f5;
+}
+
+#page-mod-quiz-attempt #page .controls, #page-mod-quiz-summary #page .controls, #page-mod-quiz-review #page .controls {
+	text-align: left;
+}
+
+#page-question-edit .boxaligncenter {
+	text-align: left;
+	margin: 0;
+}
+
+table.quizreviewsummary {
+width: 100%;
+}
+
+
+
+/* question bank */
+#page-question-edit .questionbankwindow {
+	width: 100%;
+}
+
+/* ===== edit view ==== */
+#page-mod-quiz-edit #quizcontentsblock {
+
+}
+#page-mod-quiz-edit div.quizpage span.pagetitle {
+	display: block;
+	float: none;
+	padding: 0 10px;
+	background: #444;
+	color: #fff;
+	font-family: "PT Sans Narrow", Verdana, sans-serif;
+}
+#page-mod-quiz-edit div.quizpage .pagecontent {
+	margin: 0;
+	width: 100%;
+	border: none;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	background: none;
+	padding-bottom: 0;
+	border-bottom: 1px solid #E5E5E5;
+	border-top: 2px solid #444;
+}
+#page-mod-quiz-edit div.quizpage .pagecontent .question {
+	background: #fff;
+	border-bottom: 1px solid #ccc;
+}
+#page-mod-quiz-edit div.quizpage .pagecontent .question:after { visibility: hidden; display: block; content: ""; clear: both; height: 0; }
+
+#page-mod-quiz-edit div.quizpage .pagecontent .question:nth-child(odd) {
+	background: #f7f7f7;
+}
+#page-mod-quiz-edit div.question div.content .questionname,
+#categoryquestions .questionname {
+	width: 20%;
+	color: #666;
+}
+#categoryquestions th.modifiername .sorters, #categoryquestions th.creatorname .sorters {
+	padding: 4px 0;
+}
+table#categoryquestions td, #page-mod-quiz-edit table#categoryquestions th {
+	text-overflow: ellipsis;
+	padding: 0 5px;
+}
+#page-mod-quiz-edit .reorder div.question div.content {
+	background: none;
+	width: 90%;
+	line-height: 1.3;
+	height: 28px;
+	padding-top: 3px;
+}
+
+#page-mod-quiz-edit div.reorder div.question div.qnum,
+#page-mod-quiz-edit div.question div.qnum,
+#page-mod-quiz-edit .editq div.question div.qnum {
+	width: 24px;
+	padding: 3px 0 0 1px;
+	font-size: 14px;
+}
+#page-mod-quiz-edit div.reorder div.question div.qnum {
+	width: 41px;
+}
+#page-mod-quiz-edit div.question div.content div.qorder input {
+	padding: 2px;
+}
+#page-mod-quiz-edit div.question div.content .singlequestion .questionpreview,
+#page-mod-quiz-edit div.question div.content .questionpreview a {
+	background: transparent;
+}
+
+#page-mod-quiz-edit div.editq div.question div.content {
+	padding: 2px;
+	width: 94%;
+}
+#page-mod-quiz-edit div.question div.content div.points {
+	top: 0;
+}
+#page-mod-quiz-edit div.question div.content div.points input {
+	margin: 0;
+}
+
+#page-mod-quiz-edit a.configurerandomquestion {
+	font-size: 11px;
+}
+#page-mod-quiz-edit .questioncontentcontainer div.randomquestionqlist {
+	padding: 2px;
+	margin: 5px 0;
+}
+#page-mod-quiz-edit .questioncontentcontainer div.randomquestionqlist .error {
+	margin-top: 2px;
+	display: inline-block;
+}
+#page-mod-quiz-edit div.reorder .reordercontrols .addnewpagesafterselected,
+#page-mod-quiz-edit .repaginatecommand {
+	padding-right: 0;
+}
+#page-mod-quiz-edit .statusdisplay {
+	margin-right: 0;
+	background: #F7E3E1;
+	border: 1px solid #F0BDB9;
+	border-radius: 2px;
+}
+#page-mod-quiz-edit div.reorder .reordercontrols {
+	padding-right: 0;
+}
+#page-mod-quiz-edit div.reorder .reordercontrols .moveselectedonpage {
+	padding-right: 0;
+	padding-top: 20px;
+}
+#page-mod-quiz-edit div.reorder .reordercontrols .moveselectedonpage input[name=savechanges] {
+	margin-top: 5px;
+}
+#page-mod-quiz-edit .questionbankwindow div.header {
+	font-family: "PT Sans Narrow", Verdana, sans-serif;
+	background: #444;
+	padding: 5px;
+	line-height: 1.4;
+	border: 1px solid #ccc;
+}
+#page-mod-quiz-edit div.question div.content .singlequestion .questionname, #page-mod-quiz-edit div.question div.content .singlequestion .questiontext {
+	text-overflow: ellipsis;
+}
+#page-mod-quiz-edit div.question div.content .questiontext,
+#categoryquestions .questiontext {
+	max-width: 40%;
+}
+#page-mod-quiz-edit.editing div.question div.content .questiontext,
+#categoryquestions .questiontext {
+	max-width: 40%;
+}
+#page-mod-quiz-edit .questionbankwindow div.header h2 {
+	margin: 0;
+	font-weight: normal;
+
+}
+
+#page-mod-quiz-edit .questionbankwindow.block {
+	width: 28%;
+	margin: -20px 0 20px 2%;
+}
+#page-mod-quiz-edit .categoryinfo {
+	background: #eee;
+	line-height: 1.6;
+}
+#page-mod-quiz-edit div.questionbank {
+	background: none;
+}
+.questionbankwindow.block .content {
+	border-bottom: 1px solid #444;
+}
+
+/* navigation block */
+
+.path-mod-quiz .qnbutton {
+	font-family: "PT Sans Narrow", sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	width: 20px;
+	height: 20px;
+	padding-top: 2px;
+	letter-spacing: 0;
+}
+.path-mod-quiz .qnbutton.notyetanswered, .path-mod-quiz .qnbutton.requiresgrading, .path-mod-quiz .qnbutton.invalidanswer {
+/*	background: #F7E3E1;*/
+}
+.path-mod-quiz .qnbutton.flagged {
+	background: #F7E3E1;
+}
+
+#categoryquestions .qtype {
+	padding-top: 4px;
+}
+
+.pagecontrols .singlebutton + .singlebutton {
+	margin-top: 0px;
+}
+
+#page-mod-quiz-edit .addpage {
+	margin-bottom: 5px;
+}
+
+#page-mod-quiz-edit .quizpagedelete img {
+	padding: 1px;
+	margin: 2px;
+}
+
+.modulespecificbuttonscontainer input {
+	margin-top: 2px;
+	margin-bottom: 2px;}
+
+input#id_usecurrentcat  {
+	margin-right: 3px;
+	margin-top: 1px;
+}
+
+.path-mod-quiz #attemptsform .no-overflow {
+	overflow: scroll;
+}
+
+.quizattempt .continuebutton {
+	margin-left: 0;
+}
