@@ -1,0 +1,52 @@
+/****
+auqi apenas estão definições de cor para cada unidade orgânica; tudo o resto está no tema da up (definições de cor neutras ficam também no tema up)
+
+
+****/
+
+-moz::selection { background: #C2C2C2; }
+::selection { background: #C2C2C2; }
+
+/* ++ CABEÇALHO ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+#page-header-wrap {
+ 	background: #757879;
+ 	background: -webkit-linear-gradient(45deg, #5c5e5f, #8f9192);
+ 	background: -moz-linear-gradient(45deg, #5c5e5f, #8f9192); 
+ 	background: -o-linear-gradient(45deg, #5c5e5f, #8f9192); 
+ 	background: -ms-linear-gradient(45deg, #5c5e5f, #8f9192); 
+ 	background: linear-gradient(45deg, #5c5e5f, #8f9192); 
+
+}
+
+/* MEGAMENU*/
+#megamenu .level-1 {
+	background: #4b4d4e;
+}
+
+#megamenu .level-1[aria-expanded="true"] {
+	background: #3b3c3d;
+}
+ 
+#megamenu .level-1.active {
+	background: #3b3c3d;
+}
+
+#megamenu .level-1 > a:hover {
+	background: #3b3c3d;
+}
+
+#megamenu .sub {
+	background: #3b3c3d;
+	border-bottom: 2px solid #757879;
+}
+#megamenu .sub .contains_branch ul {
+	background: #474747;
+	border-top: 1px solid #575757;
+	border-bottom: 1px solid #575757;
+}
+#megamenu .settings .contains_branch:hover,
+#megamenu .courses .sub .type_course .branch a:hover,
+#megamenu .sub li p a:hover {
+	background: #575757;
+}

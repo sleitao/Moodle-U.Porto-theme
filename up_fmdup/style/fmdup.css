@@ -1,0 +1,50 @@
+/****
+apenas estão definições de cor; tudo o resto está no tema da up (definições de cor neutras ficam também no tema up)
+
+
+
+****/
+/* ++ CABEÇALHO ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+
+#page-header-wrap {
+ 	background: #FFCB00;
+ 	background: -webkit-linear-gradient(45deg, #FFCB00, #FFE000, #FF9500);
+ 	background: -moz-linear-gradient(45deg, #FFCB00, #FFE000, #FF9500);
+ 	background: -o-linear-gradient(45deg, #FFCB00, #FFE000, #FF9500);
+ 	background: -ms-linear-gradient(45deg, #FFCB00, #FFE000, #FF9500);
+ 	background: linear-gradient(45deg, #FFCB00, #FFE000, #FF9500);
+}
+
+
+/* MEGAMENU*/
+#megamenu .level-1 {
+	background: #aa8700;
+}
+
+#megamenu .level-1[aria-expanded="true"] {
+	background: #cca200;
+}
+ 
+#megamenu .level-1.active {
+	background: #cca200;
+}
+
+#megamenu .level-1 > a:hover {
+	background: #cca200;
+}
+
+#megamenu .sub {
+	background: #cca200;
+	border-bottom: 2px solid #ffd533;
+}
+#megamenu .sub .contains_branch ul {
+	background: #D9AD00;
+	border-top: 1px solid #E3B600;
+	border-bottom: 1px solid #E3B600;
+}
+#megamenu .settings .contains_branch:hover,
+#megamenu .courses .sub .type_course .branch a:hover,
+#megamenu .sub li p a:hover {
+	background: #E3B600;
+}

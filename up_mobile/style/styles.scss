@@ -1,0 +1,1491 @@
+/****
+* Three column floating div layout with 2,1,3 column order
+* Based on: http://matthewjamestaylor.com/blog/holy-grail-no-quirks-mode.htm
+* And:  http://matthewjamestaylor.com/blog/ultimate-3-column-holy-grail-pixels.htm
+*
+* #page
+*   #page-header
+*   #page-content
+*   |  #region-main-box
+*   |    #region-post-box
+*   |      #region-main-wrap
+*   |      |  #region-main
+*   |      |    .region-content
+*   |      #region-pre
+*   |      |  .region-content
+*   |      #region-post
+*   |      |  .region-content
+*   #page-footer
+*
+* The body tag may also contain one of three layout specific classes that describe
+* the regions of the page and allow us to theme more easily.
+*
+*   default (no class) = Content + side pre + side post
+*   side-pre-only      = Content + side pre
+*   side-post-only     = Content + side post
+*   content-only       = Content
+*
+****/
+
+/* load Google Fonts */
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);
+
+
+// just from screenshots
+/*
+.logininfo { display: none; }
+#page-header { margin: 0 !important; }
+.region-content { height: 600px;}
+*/
+
+/* =============================
+GLOBAL VARIABLES
+=============================  */
+
+
+/* === COLORS === */
+
+$middle: #76A19A;
+$dark: #272123;
+$sublte: #A68D60;
+$lighten: #B0C5BB;
+$danger: #D9593D ;
+
+
+$bg: #f7f7f7;
+$type: #444;
+$borderColor: #ccc;
+$error: #C45E61;
+
+$secColor: #468EB8;
+$secColor: #58B1CC;
+$buttonColor: $middle;
+
+/* Course Colors (4by4)*/
+
+$mainColor: #877F6B;
+/* $mainColor: #C85046; */
+
+$middleDark: darken($mainColor, 10%);
+
+
+
+/* ===== TYPE ===== */
+
+$textFont: 'Droid Serif', Georgia, serif;
+$headingFont: 'PT Sans Narrow', Verdana, sans-serif;
+
+
+/* ===== LAYOUT ===== */
+
+$paddingLeft: 2%;
+$paddingTop: 10px;
+$marginLeft: 2%;
+$marginTop: 10px;
+$radius: 2px;
+
+/* ===== BASE ===== */
+
+@import "_boilerplate";
+@import "_css3";
+@import "_mixins";
+
+
+
+
+/* ===== GENERAL ===== */
+
+.skiplinks,
+#dock,
+.accesshide,
+.skip-block,
+hr,
+br { display: none; }
+
+.clearer { clear: both; }
+
+html { background-color: transparent; }
+
+body {
+	margin: 0;
+	background-color: $bg;
+	font: normal 100% $textFont;
+	overflow-y: scroll;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: none;
+}
+::-moz-selection {}
+::section {}
+
+p {
+	font: 1em/1.5 $textFont;
+}
+
+a {
+	color: $mainColor;
+	-webkit-transition: color 1s ease;
+	text-decoration: none;
+
+	&:visited {
+	}
+	&:hover {
+		-webkit-transition: color 1s ease;
+		color: #444;
+	}
+	&:active {
+//		-webkit-transition: color, background 1s ease;
+		color: #555;
+	}
+}
+
+/* ===== INPUTS ===== */
+
+input[type="submit"] {
+	@include button;
+	width: auto;
+}
+input[type="text"],
+input[type=password] {
+	@include input;
+	padding: 10px;
+}
+input[type="submit"] {
+/*	width: 90%;
+	margin: 0 auto;
+	display: block;
+	height: 44px;*/
+}
+select {
+	margin-right: 2px;
+}
+
+/* ===== PAGE ===== */
+
+#page {
+	margin: 0 auto;
+	font-weight: normal;
+	background: #f7f7f7;
+	font: 1em/1.5 $textFont;
+}
+
+#page-content {
+	width: 100%;
+	margin: 0 auto;
+}
+#page-content #region-main-box {
+	clear: both;
+}
+#page-content #region-post-box { }
+#page-content #region-main-wrap { margin-bottom: 60px; }
+#page-content #region-main { }
+#page-content #region-post {}
+#page-content .block_settings { }
+#page-footer {
+	.logininfo,
+	#theme_switch_link {
+		@include linear-gradient(#333, darken(#333, 4%));
+		border-top: 2px solid $secColor;
+		border-top: 1px solid lighten($secColor, 10%);
+		a {
+			display: block;
+			padding: 1em $paddingLeft;
+			color: #eee;
+		}
+	}
+}
+
+
+
+/* ===== TABLES ===== */
+
+// convert table to list — http://css-tricks.com/responsive-data-tables/
+.table, thead, tbody, th, td, tr, {
+	display: block;
+}
+td {
+	border: none;
+	position: relative;
+	padding: 0 $paddingLeft;
+}
+//heading
+td.label {
+	margin-top: $paddingTop;
+	text-transform: uppercase;
+	font-family: $headingFont;
+	border-bottom: 1px solid $borderColor;
+	color: $secColor;
+}
+
+
+/* ++ HEADER ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+#page-header-wrap { }
+
+#page-header {
+	@include linear-gradient($mainColor, darken($mainColor, 3%));
+	@include box-shadow(0 0 10px -4px #444);
+	height: 44px;
+	margin-bottom: 20px;
+
+	#page-site-index & { margin-bottom: 0; }
+
+	h1 {
+		margin: 0;
+		float: left;
+		font: normal 1.4em $headingFont;
+		text-transform: uppercase;
+		margin: 8px 0 0 5px;
+
+		a {
+			text-decoration: none;
+			color: #fff;
+		}
+	}
+	#menu {
+		float: right;
+		margin: 0;
+
+		.toggle {
+			display: inline;
+			float: left;
+			> a {
+				@include box-shadow(0 -2px 1px 0 $middleDark);
+				color: #fff;
+				font: 1.1em $headingFont;
+				text-decoration: none;
+				text-transform: uppercase;
+				height: 100%;
+				border-left: 1px solid $middleDark;
+				padding: 5px;
+				height: 34px;
+				display: inline-block;
+			}
+		}
+		#profilepic {
+			a {
+				padding: 0;
+				height: 44px;
+				margin-top: -1px;
+			}
+			#userinfo {
+				display: none;
+			}
+		}
+	}
+	.breadcrumb {
+		font-size: 0.8em;
+//		text-transform: uppercase;
+//		padding: $paddingTop $paddingLeft;
+		margin: 6px 0 0 10px;
+		float: left;
+		.back {
+			float: left;
+		}
+		a {
+			font: 1.4em $headingFont;
+			color: #fff;
+			padding: 3px 15px 3px 5px;
+			margin-top: 2px;
+			display: inline-block;
+			float: left;
+			text-decoration: none;
+		}
+	}
+}
+#newmessageoverlay {
+	display: none;
+}
+
+// hidden content
+#page-header #menu .toggle {
+	a {
+		text-align: center;
+		padding: 10px 20px 0;
+		height: 44px;
+	}
+	#userinfo, #messages {
+		@include box-shadow(0 5px 20px 0 #444);
+		@include border-radius($radius);
+		background: #fff;
+		border: 5px solid #444;
+		width: 250px;
+		display: none;
+		position: absolute;
+		margin: 10px 5px;
+		top: 44px;
+		right: 0;
+		z-index: 999999;
+		h3 {
+			font: 1.1em $headingFont;
+			margin: 0;
+			padding: 5px;
+			border-bottom: 1px solid $borderColor;
+			background: #eee;
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			float: none;
+			display: block;
+			border-bottom: 1px solid #ccc;
+			&:last-child {
+				border: none;
+			}
+		}
+		a {
+			display: block;
+			height: auto;
+			color: #000;
+			text-transform: none;
+			text-align: left;
+			font: 0.9em/1.6 $textFont;
+			padding: 5px;
+			&:active {
+				background: #444;
+				color: #fff;
+			}
+		}
+		&:before {
+			content: "";
+			width: 12px;
+			height: 10px;
+			top: -12px;
+			position: absolute;
+			background: transparent url([[pix:theme|help-popup]]) 0 0 no-repeat;
+		}
+	}
+	#messages:before {
+		right: 52px;
+	}
+	#userinfo:before {
+		right: 6px;
+	}
+}
+/* ===== Intro ====== */
+
+.intro {
+	width: 90%;
+	margin: 1em auto;
+}
+
+
+/* ===== LOGIN ====== */
+
+#login {
+	margin-top: 20px;
+}
+.loginbox {
+	margin: $marginLeft;
+}
+#loginform {
+	.loginform {
+		@include border-radius($radius);
+		@include box-shadow(inset 0 0 6px 0 #ccc);
+		width: 90%;
+		height: 44px;
+		background: #fff;
+		margin: 0 auto 10px;
+		display: block;
+		border: 1px solid $borderColor;
+
+	}
+	input[type="submit"] {
+		@include button;
+		width: 90%;
+		display: block;
+		height: 44px;
+		margin: 0 auto;
+	}
+}
+
+
+/* ===== COURSE CONTENT ===== */
+
+#region-main {
+	a {
+/*		color: $mainColor;*/
+		text-decoration: none;
+
+		&:visited { }
+		&:hover { }
+		&:active { }
+	}
+}
+#region-main {
+	// h2
+	.headingblock,
+	#pageheading,
+	.header .title h2,
+	h2.main {
+		margin: 20px 0 2px 2%;
+		font: 1.2em $headingFont;
+		color: $secColor;
+	}
+	// h3
+	h3.main {
+		margin-left: $marginLeft;
+		font: 1em $headingFont;
+	}
+	ul.topics,
+	ul.weeks {
+		border-top: 4px solid $secColor;
+
+	}
+}
+.course-content ul.topics > #section-0 .left,
+.course-content ul.weeks > #section-0 .left {
+	background: transparent;
+	margin: 0;
+	border: none;
+}
+.course-content ul.topics > li.section,
+.course-content ul.weeks > li.section {
+	@include linear-gradient(#fdfdfd, #eee);
+	min-height: 44px;
+	margin: 0px;
+
+	.left {
+		width: 100%;
+		text-align: left;
+		font: bold 1em $headingFont;
+		padding: 10px $paddingLeft 5px;
+		border-top: 1px solid $secColor;
+		border-bottom: 1px solid $borderColor;
+/* 		background: #eee; */
+		color: $secColor;
+/*		background: url([[pix:theme|bg-section]]);*/
+	}
+	.right {
+		display: none;
+	}
+	.content {
+		margin: 0;
+
+		.sectionname,
+		.weekdates {
+			font: bold 1.1em $headingFont;
+			margin: $marginLeft 0 14px 5px;
+			display: inline-block;
+		}
+		.summary {
+			margin: 0 2%;
+		}
+		.section {
+			margin: 0;
+			border-top: 1px solid $borderColor;
+
+			li {
+				border-bottom: 1px solid $borderColor;
+				list-style: none;
+
+				a {
+					display: block;
+					padding: 10px;
+				}
+			}
+			.label {
+				padding: $paddingTop $paddingLeft 0;
+			}
+		}
+	}
+}
+
+.course-content ul.weeks {
+	> li.section {
+		border-top: 2px solid $secColor;
+		padding-top: $paddingTop/2;
+	}
+	#section-0 {
+		padding-top: 0;
+	}
+}
+
+.region-content > .generalbox {
+	background: $bg;
+	border: 1px solid $borderColor;
+	margin: 0 $marginLeft 20px;
+}
+
+.generalbox.boxwidthwide {
+	margin: $marginTop $marginLeft;
+	padding: $paddingTop 0 0;
+	background: transparent;
+	border: none;
+	border-top: 2px solid darken($borderColor, 50%);
+}
+.notifysuccess {
+	color: $error;
+	margin: 0 $marginLeft;
+}
+.reportlink {
+	text-align: center;
+}
+#notice {
+	padding: 10px;
+
+	.buttons .singlebutton {
+		margin-bottom: 10px;
+		float: right;
+
+		input[value=Delete],
+		input[name=delete],
+		input[value=Cancel] {
+			@include secButton;
+		}
+		input[type=submit] {
+			width: auto;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	.buttons:after { visibility: hidden; display: block; content: ""; clear: both; height: 0; }
+}
+.box {
+	padding: 0 $paddingLeft;
+}
+
+/* ===== FORUMS ===== */
+
+.groupselector {
+	margin: 2% 5%;
+}
+// looks there is no renderer for this
+.forumheaderlist {
+	border: none;
+	border: 1px solid $borderColor;
+	margin: $paddingLeft;
+	width: 100% - $paddingLeft - $paddingLeft;
+
+	td {
+		@include linear-gradient(#fdfdfd, #eee);
+		border: none;
+		padding: 0;
+		width: 90%;
+		float: left;
+
+		a {
+			display: block;
+			padding: 10px;
+/*			border-bottom: 1px solid $borderColor;*/
+		}
+	}
+
+	th.replies { display: none; }
+
+	thead .topic {
+		@include linear-gradient(#aaa, darken(#aaa, 5%));
+		border: none;
+		color: #fff;
+		font-family: $headingFont;
+		text-transform: uppercase;
+	}
+	.replies {
+		display: inline;
+		float: right;
+		width: 10% !important;
+	}
+	.author, .group, .picture, .lastpost { display: none; }
+}
+
+.forumaddnew #newdiscussionform {
+	margin-left: $marginLeft;
+}
+//override plugin mod-forum css
+.path-mod-forum .forumheaderlist { @extend .forumheaderlist; }
+
+.discussioncontrols {
+	.movediscussion {
+		display: none;
+	}
+}
+.forumpost {
+	margin-top: 20px;
+	margin-bottom: 0;
+	border: none;
+	border-top: 5px solid $secColor;
+	border-bottom: 2px solid $secColor;
+
+	.header {
+		@include linear-gradient(#fff, darken(#fff, 5%));
+		border-bottom: 1px solid $borderColor;
+		padding-bottom: 10px;
+/*		margin-bottom: 10px;*/
+		.subject {
+			font-weight: bold;
+		}
+		.author {
+			font-size: 0.8em;
+		}
+		.picture {
+			width: 50px;
+			height: 50px;
+			img {
+				border: 2px solid #fff;
+				@include box-shadow(0 0 3px #ccc);
+			}
+		}
+	}
+
+	.row.maincontent {
+/*		margin: 0 2%;*/
+		width: auto;
+		.left {
+			display: none;
+		}
+		.attachments {
+			background: #eee;
+			padding: 5px 2%;
+			border-bottom: 1px solid $borderColor;
+			font-family: $headingFont;
+		}
+		.fullpost {
+			padding: 20px 2% 10px;
+		}
+	}
+
+	.more {
+		margin: 0 0 -10px -2%;
+		text-align: right;
+		a {
+			@include linear-gradient(#eee, darken(#eee, 5%));
+			@include box-shadow(0 0 2px 0 #ccc);
+			width: 102%;
+			border-top: 1px solid #ccc;
+			font-size: 1.4em;
+			padding: 8px 16px;
+			text-align: center;
+			display: inline-block;
+		}
+	}
+	.commands {
+		border: 1px solid #eee;
+		margin: 0 $marginLeft $marginTop 0;
+		float: right;
+		@extend .clearfix;
+		a {
+			@include button;
+			display: inline-block;
+		}
+	}
+}
+.path-mod-forum .indent  {
+	margin: 0;
+	.forumpost {
+		margin: 0;
+		border-top:  none;
+	}
+}
+#page-mod-forum-post {
+	.indent {
+		padding-left: 2%;
+		border-left: 1px solid $borderColor;
+		font-size: 0.9em;
+	}
+}
+/* ===== FORMS ===== */
+
+.mform {
+	padding: 0 2%;
+	margin-top: 10px;
+	.fitem {
+		margin-bottom: 10px;
+
+		.fitemtitle {
+			font: 1em $headingFont;
+			color: $secColor;
+			text-transform: uppercase;
+		}
+		.ftext input {
+			@include input;
+			width: 100%;
+			display: block;
+		}
+		.feditor textarea {
+			@include input;
+			width:  100%;
+			height: 150px;
+			display: block;
+
+			&::-webkit-input-placeholder { padding: 10px 0 0 10px; }
+			&:-moz-placeholder { padding: 10px 0 0 10px; }
+		}
+		.menumessageformat {
+			margin-top: 10px;
+		}
+		input[type=button] {
+			@include button;
+		}
+		.error {
+			input, textarea {
+				border-color: lighten($error, 20%);
+			}
+		}
+		.fcheckbox {
+		}
+	}
+
+	// filemanager
+	.ffilemanager {
+		margin-top: 5px;
+		.filemanager-toolbar span {
+			font-size: 0.8em;
+		}
+		.filemanager-container {
+			@include box-shadow(inset 0 0 5px 0 #ccc);
+			padding: 5px;
+			margin-top: 10px;
+			font-size: 0.8em;
+			background: #fff;
+			border: 1px solid $borderColor;
+
+			ul li {
+				margin-bottom: 20px;
+				&:last-child { margin-botom: 0; }
+			}
+		}
+	}
+	.fdescription {
+		display: none;
+	}
+	.error {
+		color: $error;
+		font: 1em $headingFont;
+		text-transform: uppercase;
+	}
+}
+#page-mod-data-export .mform .fitem .fgroup span {
+	display: inline-block;
+}
+#page-mod-data-export #notice span {
+	padding: 0;
+}
+// change addnew button position
+#page-mod-forum-view .region-content {
+	display: table;
+	width:  100%;
+	.forumaddnew {
+		display: table-footer-group;
+	}
+}
+
+// FILE PICKER
+.yui-panel-container {
+//	top: 0 !important;
+	left: 0 !important;
+	width: 100%;
+
+	// overriding a lot of stuff
+	#yui-gen2, #yui-gen4, #yui-gen6, .yui-layout, .yui-layout-wrap, .yui-layout-doc, .yui-layout-bd, .bd {
+		position: relative !important;
+		width: 100% !important;
+		height: auto !important;
+		float: left !important;
+//		top: 0 !important;
+		left: 0 !important;
+		padding: 0;
+		border: none;
+	}
+	.file-picker .hd {
+		background: $bg;
+		@include linear-gradient(darken($bg, 10%), $bg);
+		border: none;
+		padding: 5px;
+		font-family: $headingFont;
+		text-transform: uppercase;
+	}
+	.yui-panel .bd {
+		padding: 0;
+		border: none;
+	}
+	.yui-layout {
+		@include box-shadow(0 10px 20px 0 #444);
+		border-bottom: 5px solid $secColor;
+		background: inherit;
+	}
+	.yui-layout .yui-layout-doc #yui-gen4 {
+		top: 0 !important;
+	}
+	#yui-gen2 {
+		display: none;
+	}
+	#yui-gen4 {
+		border-bottom: 2px solid $secColor;
+
+		.fp-list {
+			width: 100%;
+			margin: 0;
+			li {
+				width: 50%;
+				float: left;
+				list-style-type: none;
+				a {
+					width: 100%;
+					display: inline-block;
+					padding: 10px;
+				}
+			}
+		}
+	}
+	#yui-gen6 {
+		padding: $paddingTop $paddingLeft 40px;
+		clear: left;
+		top: 0 !important;
+
+		.fp-upload-btn button {
+			@include button;
+		}
+		.yui-layout-bd {
+			border: none;
+		}
+		td { padding: 0; }
+		.fp-upload-form table {
+			display: block;
+		}
+		.fp-upload-form form td.mdl-right {
+			font-family: $headingFont;
+			color: $secColor;
+			text-transform: uppercase;
+			margin-top: $paddingTop;
+		}
+		select {
+			width: 100%;
+		}
+		input[type=text] {
+			@include input;
+			width: 100%;
+		}
+		.fp-rename-form p input[type=button] {
+			@include button;
+			margin-right: $marginLeft;
+		}
+		.fp-rename-form p input[value=Cancel] {
+			@include button($error);
+		}
+	}
+	.fp-toolbar {
+//		@include button;
+	}
+	.fp-grid-panel .fp-grid {
+		border-bottom: 1px solid $borderColor;
+//		float: left;
+//		width: 33% !important;
+	}
+}
+/* ===== TABS ===== */
+
+.tabtree {
+	@include border-radius($radius);
+	background: #fff;
+	border: 1px solid #ccc;
+	border-width: 1px 0;
+/*	margin: $marginLeft;*/
+	.tabrow0 {
+		margin: 0;
+		li {
+			float: left;
+			background: #fff;
+			width: 100%;
+			border-bottom: 1px solid $borderColor;
+			list-style: none;
+			&:last-child { border-bottom: none;
+			}
+
+			a {
+				display: block;
+				color: #444;
+				padding: 5px;
+				text-align: center;
+				font: 0.9em $headingFont;
+				text-transform: uppercase;
+				&:hover {
+					background: #eee;
+				}
+				&:active {
+					color: #999;
+				}
+			}
+
+			.tabrow1 {
+				font-size: 0.8em;
+				border-top: 1px solid #fff;
+				li {
+					background: lighten($secColor, 40%);
+					border-bottom: 1px solid #fff;
+				}
+				a {
+					padding: 4px;
+					color: #444;
+					text-transform: none;
+					&:hover {
+						background: lighten($secColor, 20%);
+					}
+				}
+				.selected {
+					background: lighten($secColor, 20%);
+				}
+			}
+		}
+		.here,
+		.selected {
+			background: $secColor;
+			a {
+				color: #fff;
+				&:hover {
+					background: $secColor;
+				}
+				&:acive {
+					color: #fff;
+				}
+			}
+		}
+		.empty { display: none; }
+	}
+	&:after { visibility: hidden; display: block; content: ""; clear: both; height: 0; }
+}
+// view list
+
+div#pictures { width: auto; }
+#pictures {
+	.picturediv {
+		width: 50%;
+		float: left;
+
+		td { padding: 0; }
+		.pictureframe {
+			width: 100%;
+		}
+		.picture {
+			@include border-radius($radius);
+			height: 190px;
+			width: 100%;
+			border: 4px solid lighten($borderColor, 10%);
+		}
+		.listimage img {
+			display: block;
+			margin: 0 auto;
+		}
+		td[align=right] {
+			border-top: 2px solid lighten($borderColor, 10%);
+			margin-left: -9px;
+			bottom: 35px;
+			position: absolute;
+			width: 100%;
+		}
+	}
+}
+.datapreferences {
+	clear: both;
+	margin: $marginTop $marginLeft 0;
+	#options {
+/* 		text-align: left; */
+		#advancedcheckbox {
+/* 			display: block; */
+/* 			width: auto; */
+		}
+
+		input[type=submit] {
+			margin-top: 1em;
+		}
+	}
+	#reg_search {
+		margin-bottom: 1em;
+		margin-top: 0.2em;
+		display: block !important;
+	}
+	#options > div > label {
+/* 		display: block; */
+/* 		margin-top: 1em; */
+	}
+}
+.dataadvancedsearch {
+
+	table {
+		width: 100%;
+
+		.template-field {
+			margin-top: $marginTop;
+			text-align: left;
+			font: 1em $headingFont;
+			color: $secColor;
+			text-transform: capitalize;
+			padding: 0;
+		}
+		.template-token {
+			padding: 0;
+		}
+		input[type=text] {
+			width: 100%;
+		}
+		input[type=submit] {
+			width: 40%;
+			float: right;
+		}
+		input[name=resetadv] {
+			margin-right: $marginLeft;
+		}
+	}
+}
+
+.notifyproblem {
+	margin: 0 $marginLeft;
+}
+
+// view single
+.paging {
+	margin: $marginLeft;
+	font-size: 0.8em;
+
+	a {
+		@include border-radius($radius);
+		padding: 5px 15px;
+		display: inline-block;
+		border: 1px solid #ccc;
+	}
+	.next,
+	.previous {
+		border: none;
+		padding: 10px 0;
+	}
+}
+.defaulttemplate {
+	margin: $marginLeft;
+	background: #eee;
+	border: 1px solid $borderColor;
+}
+
+#single {
+	border-top: 1px solid $borderColor;
+	margin-top: $marginTop;
+	width: 100%;
+	#singleimage img {
+		width: auto;
+	}
+}
+// add entry
+form .generalbox {
+	margin: 0 $marginLeft;
+
+	table {
+		display: block;
+		input[type=text] {
+			width: 100% !important;
+		}
+		td { padding: 0; }
+	}
+	.mdl-align {
+		margin-right: $marginLeft;
+		input {
+			float: right;
+			width: auto;
+		}
+		input + input {
+			margin-right: $marginLeft;
+		}
+	}
+	.defaulttemplate {
+		margin: 0;
+		background: transparent;
+		border: none;
+		.template-field {
+			padding-right: 5px;;
+		}
+		.row {
+			display: table-row;
+		}
+		.cell {
+			display: table-cell;
+		}
+	}
+}
+#page-mod-data-edit form .generalbox.boxwidthwide {
+	padding: 0;
+	h2.main {
+		margin-left: 0;
+	}
+}
+
+// templates
+#tempform {
+	#availabletags {
+		width: 100%;
+		margin-bottom: $marginTop;
+	}
+	label {
+		font-family: $headingFont;
+		text-align: left;
+		margin-top: $marginTop;
+	}
+	textarea {
+		width: 100%;
+	}
+	input[type=submit] {
+		float: left;
+	}
+	input[name=defaultform] {
+		float: none;
+	}
+}
+
+// fields
+
+#page-mod-data-field- .generaltable {
+	@include table;
+	width: 96%;
+	margin: $marginTop*2 $marginLeft;
+	thead {
+		border-bottom: 1px solid $borderColor;
+	}
+	th {
+		font: 1em $headingFont;
+		border: none;
+		padding: 0 0 2px 0;
+		text-transform: uppercase;
+		color: #666;
+	}
+	td {
+		padding: 0;
+	}
+}
+#page-mod-data-field-date #editfield {
+/*	td, th {
+		border: none;
+		border-bottom: 1px solid $borderColor;
+	}
+	td input {
+		width: auto;
+	}
+	*/
+}
+
+// presets
+
+#page-mod-data-preset #region-main {
+	h2 {
+		border-bottom: 1px solid $borderColor;
+	}
+	h2:first-of-type {
+		border: none;
+	}
+}
+
+/* ====== LESSON ===== */
+
+// preview
+.generalbox.firstpageoptions {
+	margin-top: $marginTop;
+	background: transparent;
+
+	h3 {
+		background: $secColor;
+		margin: 0;
+		padding: 10px;
+		font: 1em $headingFont;
+		text-transform: uppercase;
+		color: #fff;
+	}
+	p {
+		margin: 0;
+	}
+	a {
+//		@include linear-gradient(#fff, #e1e1e1);
+		display: block;
+		padding: 10px;
+		border-top: 1px solid $borderColor;
+	}
+
+}
+
+/* ===== POPUP ===== */
+
+#helppopupbox {
+	width: 100% !important; //override yui
+	background: transparent url([[pix:theme|help-popup]]) 40px 8px no-repeat;
+}
+#helppopupbox .yui3-overlay-content {
+	@include box-shadow(0 0 6px 0 #444);
+	@include border-radius($radius);
+	background: #fff;
+	border: 5px solid #444;
+	margin: 14px $marginLeft 0;
+	width: auto;
+	.helpheading {
+		margin: 0 0 5px 0;
+		padding: 10px;
+		border-bottom: 1px solid $borderColor;
+		font: 1.2em $headingFont;
+		text-transform: uppercase;
+		background: #eee;
+	}
+	p {
+		margin: 0 10px 5px;
+		:last-child {
+			margin: 0;
+		}
+	}
+	#closehelpbox {
+		padding: 15px 20px;
+		margin: 5px -10px 0 0;
+		position: relative;
+		top: 8px;
+	}
+	.yui3-widget-hd {
+		float: right;
+	}
+}
+
+/* ===== ASSIGNMENT ===== */
+
+#dates {
+	table {
+		margin: 0;
+		width: 100%;
+	}
+	tr {
+		margin: $paddingTop 0;
+		border-bottom: 1px solid $borderColor;
+		padding-bottom: $paddingTop;
+		&:last-child {
+			border: none;
+			padding: 0;
+		}
+	}
+	.c0 {
+		font: 0.9em $headingFont;
+		text-align: left;
+		color: $secColor;
+	}
+	.c1 {
+		font-size: 0.95em;
+	}
+}
+#page-mod-assignment-view #dates {
+	@extend #dates;
+}
+
+// file picker
+
+.generalbox .mform {
+	.fgroup input {
+		width: auto;
+		float: right;
+		margin-left: $marginLeft;
+	}
+	#id_cancel {
+		@include secButton;
+	}
+}
+/* ===== LOGGEDIN HOMEPAGE ===== */
+
+#page-site-index {
+	.courses-list {
+		margin: 0;
+		border-top: 4px solid $secColor;
+
+		li {
+			@include linear-gradient($bg, darken($bg, 3%));
+			list-style: none;
+			border-bottom: 1px solid $borderColor;
+			padding: 0;
+		}
+		a {
+			padding: 20px 5px;
+			display: block;
+			font: 1em $textFont;
+		}
+	}
+}
+
+/* ===== SIDEBAR ===== */
+
+.block_action {
+	display: none;
+}
+#region-post .block {
+	border-bottom: 1px solid $secColor;
+
+	h2 {
+		background: #444;
+		@include linear-gradient(#444, darken(#444, 2%));
+		margin: 0;
+		padding: 14px $paddingLeft;
+		font: 1em/1 $headingFont;
+		color: #fff;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+	}
+	.content {
+		padding: $paddingLeft;
+	}
+	.newlink a,
+	.footer a {
+		padding: $paddingLeft;
+		display: inline-block;
+	}
+}
+
+.block_news_items { }
+
+.unlist {
+	border-top: 1px solid $borderColor;
+
+	li {
+		@include linear-gradient($bg, darken($bg, 3%));
+		border-bottom: 1px solid $borderColor;
+		padding: $paddingLeft;
+		a {
+			padding: 10px;
+		}
+	}
+}
+// my private file
+.block_private_files .ygtvitem {
+	word-wrap: break-word; // this needs a fixed width to work
+	width: 100%;
+	overflow: hidden; // temp fix, i guess
+}
+
+// navigation and settings
+.block_navigation, .block_settings { display: none; }
+
+.block_settings .block_tree,
+.block_navigation .block_tree {
+	margin: 0;
+
+	.tree_item { margin: 0; }
+	.tree_item.branch.navigation_node {
+		padding: 10px;
+		border-bottom: 1px solid #ccc;
+	}
+	.depth_2 { border-bottom: 1px solid #ccc; }
+	li { margin: 0; }
+	li li {
+		padding: 10px;
+		padding-left: 18px;
+/* 		border-bottom: 1px solid #ccc; */
+	}
+	li.depth_2 ul {
+
+	}
+}
+.block_settings {
+	.box { padding: 0; }
+	.block_tree .tree_item.branch { background-position: 5px 46%; }
+	.block_tree .root_node {
+		padding: 10px 20px;
+		border-bottom: 1px solid #ccc;
+	}
+}
+
+#region-post .block_settings .content,
+#region-post .block_navigation .content {
+	padding: 0;
+}
+
+/* ===== CHOICE ===== */
+// .path-mod-choice
+// #page-mod-choice-report
+
+.path-mod-choice .response {
+	.results {
+		width: 100%;
+		margin: $marginLeft;
+		thead th {
+			float: left;
+			width: 50%;
+		}
+		tbody {
+			clear: both;
+		}
+	}
+}
+#page-mod-choice-report .downloadreport {
+	margin: $marginTop auto 0;
+	width: 90%;
+
+	ul li {
+		padding: 0;
+		width: 100%;
+		margin-bottom: $marginTop;
+	}
+	input {
+		width: 100%;
+	}
+}
+/*#page-mod-choice-report .downloadreport ul li*/
+//#path-mod-choice-report .downloadreport { @extend .downloadreport; }
+
+/* =====  GENERAL COURSE ===== */
+// search forums
+
+.block_search_forums {}
+.invisiblefieldset {
+	text-align: left;
+	margin: $marginLeft;
+}
+.searchform {
+	margin-top: $marginTop;
+	button {
+		@include button;
+		width: 12%;
+	}
+	input[type=text] {
+		width:  88%;
+	}
+	a {
+		padding: $paddingTop 0;
+		display: inline-block;
+		img {
+			padding: 5px 20px 10px 5px;
+		}
+	}
+}
+
+// page
+.modified {
+	margin: 0 $marginLeft;
+	font-size: 0.7em;
+}
+
+
+/* ===== USER PROFILE ===== */
+
+.userprofile {
+	margin: $marginLeft;
+
+	.profilepicture {
+		float: left;
+		margin-right: $marginLeft;
+		img {
+			@include box-shadow(0 0 4px #ccc);
+			border: 4px solid #fff;
+		}
+	}
+	.userprofilebox {
+		margin-top: 20px;
+	}
+	.descriptionbox {
+		tr:first-child td {
+			margin: 0;
+		}
+	}
+	td {
+		padding: 0;
+	}
+}
+
+/* ===== MYMOODLE ===== */
+
+.block_course_overview {
+	.coursebox {
+		border-top: 1px solid #333;
+
+		.overview {
+			border-top:	1px solid #ccc;
+		}
+	}
+}

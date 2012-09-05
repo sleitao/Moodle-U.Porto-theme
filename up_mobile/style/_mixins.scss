@@ -1,0 +1,98 @@
+/* ===== THEME MIXINS ===== */
+
+@mixin box {
+	@include box-shadow(0 0 3px $borderColor);
+	border: 1px solid $borderColor;	
+}
+
+@mixin button($buttonColor: #ccc) {
+	@include linear-gradient(#eee, #ccc);
+	@include border-radius(2px);
+	@include box-shadow(0 0 1px #444);
+	text-shadow: 0 1px 1px #F7F7F7;
+	font: 0.9em $headingFont;
+	border: none;
+	color: #666;
+	padding: 10px;
+	&:hover {
+		@include box-shadow(0px 0 1px #000);
+		color: #444;
+		cursor: pointer;
+	}
+	&:active {
+		@include box-shadow(inset 0px 0 4px #444);
+		color: #222;
+	}
+}
+@mixin secButton {
+	@include box-shadow(0 0 0 transparent);
+	background: none;
+	border: none;
+	color: #444;
+	text-shadow: none;
+	&:hover,
+	&:active {
+		background: none;
+		border: none;
+		color: #666;
+	}
+	&:active {
+		margin-top: 1px;
+	}
+}
+@mixin input {
+	@include border-radius($radius);
+	@include box-shadow(0 0 0 1px $bg, inset 0 3px 7px -4px #444);
+	background: $bg;
+	border: 1px solid darken($bg, 20%);
+	margin: 0 auto;
+	
+	&:focus {
+		@include box-shadow(0 0 4px $secColor);	
+		border-color: $borderColor;
+		outline: none;
+	}
+}
+
+// style table
+@mixin table {
+	display: table;
+	thead {
+		display: table-header-group;
+	}
+	tbody {
+		display: table-row-group;
+	}
+	tr {
+		display: table-row;
+	}
+	td, th {
+		display: table-cell;
+	}
+}
+
+/*  ======================
+	UTILITIES
+	====================== */
+
+@mixin clearfix {
+	*zoom: 1;
+	&:before,
+	&:after {
+		display: table;
+		content: "";
+	}
+	&:after {
+		clear: both;
+	}
+}
+.clearfix {
+	@include clearfix;
+}
+
+// text overflow
+@mixin text-overflow {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
