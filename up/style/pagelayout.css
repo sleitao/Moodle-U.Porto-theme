@@ -783,6 +783,43 @@ padding: 10px;
 .social .delicious a:hover { background: #407ACC; }
 
 
+
+/* Fluid pages */
+
+#page-mod-assignment-submissions #page-content,
+#page-mod-quiz-edit #page-content,
+#page-grade-edit-tree-index #page-content,
+#page-grade-report-grader-index #page-content,
+#page-mod-quiz-report #page-content {
+	min-width: 1140px;
+	width: 95%;
+}
+
+#page-mod-assignment-submissions #page-content #region-main-wrap,
+#page-mod-quiz-edit #page-content #region-main-wrap,
+#page-grade-edit-tree-index #page-content #region-main-wrap,
+#page-grade-report-grader-index #page-content #region-main-wrap,
+#page-mod-quiz-report #page-content #region-main-wrap {
+	width: 100%;
+}
+
+#page-mod-assignment-submissions #page-content #region-main,
+#page-mod-quiz-edit #page-content #region-main,
+#page-grade-edit-tree-index #page-content #region-main,
+#page-grade-report-grader-index #page-content #region-main,
+#page-mod-quiz-report #page-content #region-main {
+	width: 80%;
+	padding-right: 20px;
+}
+#page-mod-assignment-submissions .block_settings,
+#page-mod-quiz-edit .block_settings,
+#page-grade-edit-tree-index .block_settings,
+#page-grade-report-grader-index .block_settings,
+#page-mod-quiz-report .block_settings {
+	width: 20%;
+	max-width: 220px;
+}
+
 /* ===== IE ====== */
 
 .ie8 #page-content #region-main-wrap {
