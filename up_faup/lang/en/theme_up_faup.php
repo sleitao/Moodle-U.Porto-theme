@@ -26,4 +26,4 @@
 $string['pluginname'] = 'UP FAUP';
 $string['region-side-post'] = 'Right';
 $string['region-side-pre'] = 'Left';
-$string['choosereadme'] = 'Tema da Faculdade de Arquitectura';
+$string['choosereadme'] = 'Tema da Faculdade de Arquitetura';
