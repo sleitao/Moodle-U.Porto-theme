@@ -12,7 +12,7 @@
 	    src: url('up/fonts/DroidSerif-Regular-webfont.eot?#iefix') format('embedded-opentype'),
 	         url('up/fonts/DroidSerif-Regular-webfont.woff') format('woff'),
 	         url('up/fonts/DroidSerif-Regular-webfont.ttf') format('truetype'),
-	         url(up/fonts/'DroidSerif-Regular-webfont.svg#DroidSerifRegular') format('svg');
+	         url('up/fonts/DroidSerif-Regular-webfont.svg#DroidSerifRegular') format('svg');
 	    font-weight: normal;
 	    font-style: normal;
 
@@ -195,7 +195,7 @@ h1, h2, h3, h4, h5, h6 {
 .logininfo a,
 .logininfo a:visited { color: #fff; border-bottom-color: #444; text-decoration: underline;
 }
-.logininfo a:hover { color: #222; background: inherit; }
+.logininfo a:hover { background: inherit; color: #fff; text-decoration: none; }
 
 
 .notloggedin .langmenu {
@@ -266,7 +266,7 @@ h1, h2, h3, h4, h5, h6 {
 	float: left;
 	color: #666;
 }
-.breadcrumb a:visited { color: #857040; }
+.breadcrumb a:visited { color: #888; }
 .breadcrumb a:hover { color: #666; }
 .breadcrumb a:active { color: #fff; }
 .breadcrumb ul {
@@ -360,11 +360,8 @@ h1, h2, h3, h4, h5, h6 {
 	width: 640px;
 	float: left;
 }
-.frontbloc-container {
-        padding-top: 20px;
-}
 #frontpage-content > .frontblock {
-	border-bottom: 2px solid #857040;
+	border-bottom: 2px solid #444;
 	overflow: hidden;
 	padding-bottom: 20px;
 	margin-right: 20px;
@@ -372,7 +369,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #frontpage-content > .frontblock:last-child { border: none; }
 #uni { float: right; }
-#uni h2 { border-bottom: 2px solid #857040; }
+#uni h2 { border-bottom: 2px solid #444; }
 #uni ul { margin: 0; }
 #uni .list .icon {
 	float: left;
@@ -600,18 +597,21 @@ padding: 10px;
     margin: 2px;
     padding: 5px;
 
-}.bx-pager .pager-active{
+}
+	.bx-pager .pager-active{
     color: black;
 }
-
+.region-content .welcome h3 a {
+	text-decoration: none;
+}
 
 .welcome {
 	border: 1px solid #ccc;
 	border-radius: 2px;
 	padding: 10px;
 	background: url([[pix:theme|bg]]) right no-repeat;
-	box-shadow:	inset 0 0 30px 5px #E5E9EA, 0 0 3px #ccc, 0 0 3px #ccc;
-        height: 400px;
+/* 	box-shadow:	inset 0 0 30px 5px #E5E9EA, 0 0 3px #ccc, 0 0 3px #ccc; */
+    height: 400px;
 }
 .welcome img {
 	float: right;
@@ -639,7 +639,7 @@ padding: 10px;
 }
 .region-content .welcome h3 a span {
         background-color: white;
-        padding: 0 2px;
+        padding: 4px;
 }
 
 .region-content .welcome h3.white {
@@ -720,7 +720,7 @@ padding: 10px;
 	border: none;
 }
 #page-footer .logininfo a {
-	color: #857040;
+	color: #666;
 }
 .footer-item {
 	width: 20%;
@@ -819,6 +819,12 @@ padding: 10px;
 	width: 20%;
 	max-width: 220px;
 }
+
+
+
+
+
+
 
 /* ===== IE ====== */
 

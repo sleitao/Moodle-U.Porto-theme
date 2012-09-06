@@ -1,13 +1,21 @@
+// se true o menu de settings vai ficar no topo, caso contrário fica na coluna lateral
+var settingsHeader = false;
+
 $(document).ready(function() {
 
-	//init
+	//INIT
+
+	// Menu de navegação no cabeçalho
 	customMenu();
-//	tableContents();
+
+	// Menu de settings na lateral (provavelmente já não deve ser preciso)
 	settingsMenu();
-	//textIcons();
+
+	// Dropdowns no modo de edição
 	if($('body').hasClass('editing')) {
 		editMode();
 	}
+
 
 	// change width of the content column if sidebar is empty
 	if ($('body').hasClass('notloggedin')) {
@@ -26,31 +34,11 @@ $(document).ready(function() {
 	$('#page-site-index #slider1').bxSlider({
 		mode: 'fade',
 		auto: true,
-        pager: true,
-		pause: '10000',
+		page: true,
+		pause: 4000,
 		controls: false,
 		randomStart: false
-//		onAfterSlide: function(currentSlideNumber, totalSlideQty, currentSlideHtmlObject){
-//			currentSlideHtmlObject.parent().parent().css('width', '100%').parent().css('width', '100%'); // use something more pretty
-//		}
 	});
-	     //Calculate the height of <header>
-	       //Use outerHeight() instead of height() if have padding
-	       var aboveHeight = $('.block_settings').outerHeight();
-
-		//when scroll
-	       $(window).scroll(function(){
-		        //if scrolled down more than the header’s height
-	               if ($(window).scrollTop() > 200){
-
-		        // if yes, add “fixed” class to the <nav>
-		        // add padding top to the #content                (value is same as the height of the nav)
-//	               $('.block_settings').addClass('fixed');
-
-	               } else {
-//	               $('.block_settings').removeClass('fixed');
-	               }
-	       });
 
 });
 
@@ -59,11 +47,13 @@ function customMenu() {
 
 	//hide default block
 	$('.block_navigation').hide();
-	//$('.block_settings').hide();
+	if (settingsHeader)
+	 	$('.block_settings').hide();
 
 	//remove images
 	$('.block_navigation a img').remove();
-	//$('.block_settings a img').remove();
+	if (settingsHeader)
+		$('.block_settings a img').remove();
 
 	//get content
 	var myHome = $('.block_navigation li.depth_1:eq(0) p');
@@ -76,19 +66,20 @@ function customMenu() {
 	myCourses.find('.type_course').removeClass('contains_branch');
 	myCourses.find('.type_course ul').remove();
 
-	/*
-var settingsName = $('.block_settings .header .title h2').html()
-	var settings = $('#settingsnav > ul');
-	settings = $('<li class="contains_branch"></li>').append(settings);
-*/
-
+	if (settingsHeader) {
+		var settingsName = $('.block_settings .header .title h2').html()
+		var settings = $('#settingsnav > ul');
+		settings = $('<li class="contains_branch"></li>').append(settings);
+	}
 
 	if(myProfile.length){
 		content = '<li id="home" class="level-1" role="menuitem">' + myHome.html() + '</a></li>'
 		+ parseItem(myProfile, 'profile')
 		+ parseItem(myCourses, 'courses')
 		+ parseItem(sitePages, 'pages');
-		//+ parseItem(settings, settingsName);
+		if (settingsHeader)
+			content += parseItem(settings, 'settings');
+
 
 		$('#page-header').append('<div id="megamenu"><ul id="menu" class="menu" role="menu">' + content + '</ul></div>');
 
@@ -112,7 +103,6 @@ var settingsName = $('.block_settings .header .title h2').html()
 					.attr('aria-expanded', 'false')
 					.find('>a')
 					.addClass('menu-parent menu-parent-collapsed');
-		//	menu.find('li.first-level > ul > li').attr('aria-expanded','true');
 			menu.find('li.level-1 > ul > li').has('ul').addClass('expanded');
 
 		//bind custom events
@@ -186,9 +176,7 @@ var settingsName = $('.block_settings .header .title h2').html()
 					menu.find('[tabindex=0]').attr('tabindex','-1');
 					//assign 0 tabindex to focused item
 					$(event.target).attr('tabindex','0');
-					//if($('li.first-child').hasClass('menu-item-active') && $('li.first-child').not('[aria-expanded=true]'))
 					$(event.target).parent().siblings('li.level-1').find('> a').trigger('collapse');
-				//	$(event.target).parent().next('li.level-1').find('> a').trigger('collapse');
 			},
 			click: function(event){
 				//save reference to event target
@@ -267,82 +255,23 @@ function parseItem(item, name){
 	} else {
 		var level = (name || 0);
 	}
+
 	var h4 = $('> p a, > p > span', item);
+
+	if (h4.length === 0) {
+		h4 = $('.block_settings .header .title h2');
+
+	}
+
 	var list = $('> ul', item);
 
+/* 	var content = '<li class="level-1 ' + name + '"><a href="#" tabindex="-1" class="menu-parent menu-parent-collapsed">' + h4.html() + '</a><ul class="sub menu-group-collapsed">' + list.html() + '</ul></li>'; */
 	var content = '<li class="level-1 ' + name + '"><a href="#" tabindex="-1" class="menu-parent menu-parent-collapsed">' + h4.html() + '</a><ul class="sub menu-group-collapsed">' + list.html() + '</ul></li>';
 
-//	if (level == 1) {
-//		h4 = '<a href="#" tabindex="-1" class="menu-parent menu-parent-collapsed">' + h4 + '</a>';
-//	} else {
-//		h4 = '<a href="#" tabindex="-1"><h4>' + h4 + '</h4></a>';
-//	}
-
-//	if (level == 1)
-//	var content = '<li id="' + /* id +*/ '" class="level-' + level + '" role="menuitem">' + h4 + list +  '</li>';
-
-
-//	else
-//		content = '<li class="level-' + level + '" role="menuitem expanded">' + h4 + list +  '</li>';*/
-	/*level++;
-
-	var h4 = $('> p a, > p > span', item);
-	var list = $('> ul > li', item);
-
-	//define list id
-	var id = h4.text().replace(/ /g,'-') || name;
-	id = id.toLowerCase();
-
-	//convert h4 to html
-	h4 = h4.html() || name;
-
-	if (level == 1)
-		h4 = '<a href="#" tabindex="-1" class="menu-parent menu-parent-collapsed">' + h4 + '</a>';
-	else
-		h4 = '<a href="#" tabindex="-1"><h4>' + h4 + '</h4></a>';
-
-	//define list content
-	var branchContent = new Array();
-	var noBranchContent = '';
-	var i = 0;
-
-	$(list).each( function(index){
-		//if($(this).hasClass('contains_branch') && !$(this).hasClass('type_course')) {
-		if($(this).hasClass('contains_branch') && !$(this).hasClass('depth_3')) {
-			branchContent[i] = parseItem(this, level)
-			i++;
-		} else {
-			noBranchContent += '<li role="menuitem">' + $('> p', this).html() + '</li>';
-		}
-	});
-	//test if noBranchContent is empty
-	if(noBranchContent != ''){
-		if(!$(this, list).hasClass('type_course')) {
-			if (level == 1)
-				noBranchContent = '<li class="general"><ul>' + noBranchContent + '</ul></li>';
-		}
+	// return empty if item is null
+	if ( item.length == 0 ) {
+		return '';
 	}
-	//output only filled elements
-	branchTemp = "";
-	for (var i=0; i < branchContent.length; i++) {
-		if (branchContent[i] != null)
-			branchTemp += branchContent[i];
-	};
-
-	branchContent = branchTemp
-
-	branch = noBranchContent + branchContent;
-
-	//set lists
-	if (level == 1)
-		list = '<ul class="sub menu-group-collapsed" role="group">' + branch + '</ul>';
-	else
-		list = '<ul>' + branch + '</ul>'
-
-	if (level == 1)
-		content = '<li id="' +  id + '" class="level-' + level + '" role="menuitem">' + h4 + list +  '</li>';
-	else
-		content = '<li class="level-' + level + '" role="menuitem expanded">' + h4 + list +  '</li>';*/
 
 	return content;
 }
@@ -364,46 +293,12 @@ function settingsMenu(){
 
 }
 
-function tableContents(){
-
-	//NEW NAVIGATION BLOCK
-
-	//DEFINE LISTS
-	//table of contents
-	var tableContents = $('.block_navigation .type_course li.type_structure');
-	$('.course-content .outline').remove();
-
-	var outline = $('.course-content .outline').html();
-	if(outline) {
-		var tc = '';
-		$('p span', tableContents).each(function(index){
-			tc += '<li class="tc"><a href="#section-' + index + '">' + $(this).html() + '</a></li>';
-		});
-
-		//course info
-		var courseInfo = $('.block_navigation .type_course li.type_unknown.depth_4');
-
-		//remove default navigation block
-		$('#region-pre .region-content').empty();
-		if($(tc).length || $(courseInfo).length) {
-			//add table of content
-			if($(tc).length && outline != null)
-				$('#region-pre .region-content').append('<div id="tableContents"><h4>' + outline + '</h4><ul>' + tc + '</ul></div>');	}
-
-		//go to link
-		$('#tableContents .tc').bind('click', function() {
-			var index = $(this).index();
-			var section = "#section-" + index;
-			$('body, html').animate({
-		  		scrollTop: $(section).offset().top
-			}, 500);
-			return false;
-		});
-	}
-}
-
 
 function editMode(){
+
+	// add class to body
+	$('body').addClass('edit-mode');
+
 //	 Edit Summary
 	$('.summary .edit').parent().each(function(){
 		iconToText(this);
@@ -416,8 +311,11 @@ function editMode(){
 	});
 	//change move button location
 	$('.course-content .commands').each(function(){
-		var m = $('a:first', this).addClass('move');
- 		$(this).parent().prepend(m);
+		var m = $('a:first', this);
+		if (m.css('cursor') === 'move') {
+			m.addClass('move');
+	 		$(this).parent().prepend(m);
+		}
 	});
 	// redraw menu if item is added or removed
 	$('.course-content .commands a').click(function(){
@@ -432,7 +330,7 @@ function editMode(){
 	$('.block .commands').each(function () {
 		var p = $(this).parent();
 		if (p.find('h2').length == 0) {
-			p.prepend('<h2><img width="16" height="16" title="" alt="Edit block" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAKRJREFUeNpiZCAC+Pr6+wOpCUCsABV6AMQFmzdv3MhIhOZ4ILUAh3QAMwmaPwAxB5oSCyYiNV+AOh/dJQpMRGp2APr3IxAnohvCRKxmJCUFUO+AA5OJFM1AeX4gdQCIBWCGMZGh2QAqlACPRjI1LwQxGCnRDAtEsjWjx8ICJIVEaQYBFiT2BCjNSKxmXOnAnljN6C6AgQNIbLyasbqAFM0gABBgAFqOauNelbdAAAAAAElFTkSuQmCC" /></h2>');
+			p.prepend('<h2 class="empty-title"></h2>');
 		}
 	});
 }
