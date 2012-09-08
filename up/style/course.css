@@ -155,7 +155,14 @@
 }
 #region-main .section .dimmed_text,
 #region-main .section .dimmed .commands img,
-#region-main .section .dimmed_text .commands a { opacity: 1; }
+#region-main .section .dimmed_text .commands a {
+	text-decoration: line-through;
+ }
+
+a.dimmed, a.dimmed:link, a.dimmed:visited, a.dimmed_text, a.dimmed_text:link, a.dimmed_text:visited, .dimmed_text, .dimmed_text a, .dimmed_text a:link, .dimmed_text a:visited, .usersuspended, .usersuspended a, .usersuspended a:link, .usersuspended a:visited, .dimmed_category, .dimmed_category a {
+	color: #857040;
+	opacity: 0.8;
+}
 
 #region-main .section .content ul li .dimmed_text img,
 #region-main .section .content ul li .dimmed img  {

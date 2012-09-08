@@ -16,8 +16,8 @@ th, td {
 }
 
 /* course links*/
-a { color: #666; }
-a:visited { color: #888; }
+a { color: #857040; }
+a:visited { color: #7a6f3a; }
 a:hover { color: #444; }
 a:active {
 	color: #fff;
