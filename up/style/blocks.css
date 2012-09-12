@@ -26,6 +26,7 @@
 	border: 1px solid #fff;
 	border-bottom: 1px solid #e5e5e5;
 	text-transform: uppercase;
+	padding: 7px 4px 0 2px;
 }
 #region-post  .block .generalbox {
 	width: auto;
@@ -89,15 +90,44 @@
 
 /* ===== EDIT MODE ===== */
 
-.editing #region-post .block .title { position: relative; }
-.editing #region-post .block div.commands { margin: -11px 0 0 0; }
-.editing #region-post .block .commands a { display: block; }
-.editing #region-post .block .commands a img { margin-right: 5px; }
-.editing #region-post .block .edit-toggle {
+.edit-mode #region-post .block .title { position: relative; }
+.edit-mode #region-post .block div.commands { margin: -11px 0 0 0; }
+.edit-mode #region-post .block .commands a { display: block; }
+.edit-mode #region-post .block .commands a img { margin-right: 5px; }
+.edit-mode #region-post .block_with_controls .edit-toggle {
 	position: absolute;
-	right: 5px;
-	top: 0;
+	right: 10px;
+	top: 10px;
 	color: #777 !important;
+	font-size: 10px;
+}
+.edit-mode #region-post .block .edit-toggle {
+	pointer-events: none;
+}
+.edit-mode #region-post .block h2 {
+	position: relative;
+}
+.edit-mode #region-post .block_with_controls h2:after {
+	content: '▼';
+	position: absolute;
+	right: 10px;
+	top: 13px;
+	color: #ccc;
+	font-size: 10px;
+}
+.edit-mode #region-post .block_with_controls h2:hover {
+	background: #F7F7F7;
+	cursor: pointer;
+}
+.edit-mode #region-post .block_with_controls .edit-active h2 {
+	background: #F7F7F7;
+}
+.edit-mode #region-post .block_with_controls .edit-active h2:after {
+	content: "";
+}
+
+.editing #region-post .block .empty-title {
+	height: 26px;
 }
 .editing #region-post .block .buttons {
 	overflow: hidden;
@@ -109,4 +139,10 @@
 }
 .block .section_add_menus .menujump {
 	width: 80%;
+}
+
+/* settings block */
+
+.block_settings .adminsearchform #adminsearchquery {
+	width: 60%;
 }

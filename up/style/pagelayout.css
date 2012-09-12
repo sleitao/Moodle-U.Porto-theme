@@ -12,7 +12,7 @@
 	    src: url('up/fonts/DroidSerif-Regular-webfont.eot?#iefix') format('embedded-opentype'),
 	         url('up/fonts/DroidSerif-Regular-webfont.woff') format('woff'),
 	         url('up/fonts/DroidSerif-Regular-webfont.ttf') format('truetype'),
-	         url(up/fonts/'DroidSerif-Regular-webfont.svg#DroidSerifRegular') format('svg');
+	         url('up/fonts/DroidSerif-Regular-webfont.svg#DroidSerifRegular') format('svg');
 	    font-weight: normal;
 	    font-style: normal;
 

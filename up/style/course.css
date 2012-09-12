@@ -40,7 +40,7 @@
 }
 #course-title h2 {
 	float: left;
-	max-width: 760px;
+	max-width: 710px;
 	margin: 0;
 	padding-top: 6px;
 	color: #666;
@@ -152,7 +152,10 @@
 }
 #region-main .section .dimmed_text,
 #region-main .section .dimmed .commands img,
-#region-main .section .dimmed_text .commands a { opacity: 1; }
+#region-main .section .dimmed_text .commands a {
+	opacity: 1;
+	text-decoration: line-through;
+}
 
 #region-main .section .content ul li .dimmed_text img,
 #region-main .section .content ul li .dimmed img  {
@@ -286,8 +289,9 @@ input + input {
 .editing .course-content .section li .mod-indent .edit-toggle {
 	position: absolute;
 	right: 5px;
-	top: 0;
+	top: 3px;
 	color: #777 !important;
+	font-size: 10px;
 }
 
 .editing .course-content .section li .mod-indent .move {
@@ -308,9 +312,8 @@ section_add_menus .horizontal div,
 }
 
 .button.edit-summary {
-	margin: 10px 0;
-	margin-top: 3px;
-	padding: 6px;
+	margin: 3px 0 10px 0;
+	padding: 8px 6px 3px;
 	display: inline-block;
 	font-size: 13px;
 	line-height: 1;
