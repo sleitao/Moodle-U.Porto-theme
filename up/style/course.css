@@ -16,11 +16,11 @@
  * middle grey: #777 || #DDD
  * light grey #E5E5E5
  *
- * red: 857040
- * light red:  b59d65
- * middle red: a78d51
- * dark red:  57492a
- * red hover: fdfcfa
+ * red: #857040 => 857040
+ * light red: #f9e5de => b59d65
+ * middle red: #e89279 => a78d51
+ * dark red: #7f2e16 => 57492a
+ * red hover: #fefcfb => fdfcfa
  *
  */
 
@@ -40,7 +40,7 @@
 }
 #course-title h2 {
 	float: left;
-	max-width: 710px;
+	max-width: 760px;
 	margin: 0;
 	padding-top: 6px;
 	color: #666;
@@ -95,14 +95,14 @@
 	display: none;
 }
 #region-main .section.hidden {
+/*	background-color: #eee;*/
+/*	padding: 0 5px 0;*/
 	opacity: 0.6;
 }
 #region-main .section.current {
-	border-left: 5px solid #ccc;
+	border-left: 5px solid #857040;
 	margin-left: -10px;
 	padding-left: 5px;
-	padding-right: 5px;
-	background: #f1f1f1;
 }
 #region-main .section .content {
 	margin: 0;
@@ -133,7 +133,6 @@
 }
 #region-main .section .content ul li {
 	list-style-type: none;
-	background: #fff;
 }
 #region-main .section .content ul li .instancename {
 	max-width: 570px;
@@ -143,30 +142,21 @@
 	list-style-type: disc;
 }
 #region-main .section .content ul li a {
-/* 	color: #666; */
-}
-#region-main .section .content ul li a span {
+	color: #857040;
 	text-decoration: underline;
 }
 #region-main .section .content ul li .dimmed_text .instancename,
 #region-main .section .content ul li .dimmed .instancename  {
 	text-decoration: line-through;
-/* 	opacity: 0.6; */
+	opacity: 0.6;
 }
 #region-main .section .dimmed_text,
 #region-main .section .dimmed .commands img,
-#region-main .section .dimmed_text .commands a {
-	text-decoration: line-through;
- }
-
-a.dimmed, a.dimmed:link, a.dimmed:visited, a.dimmed_text, a.dimmed_text:link, a.dimmed_text:visited, .dimmed_text, .dimmed_text a, .dimmed_text a:link, .dimmed_text a:visited, .usersuspended, .usersuspended a, .usersuspended a:link, .usersuspended a:visited, .dimmed_category, .dimmed_category a {
-	color: #857040;
-	opacity: 0.8;
-}
+#region-main .section .dimmed_text .commands a { opacity: 1; }
 
 #region-main .section .content ul li .dimmed_text img,
 #region-main .section .content ul li .dimmed img  {
-/* 	opacity: 0.6; */
+	opacity: 0.6;
 }
 #region-main .section .content ul li a:hover {
 	color: #444;
@@ -216,7 +206,27 @@ a.dimmed, a.dimmed:link, a.dimmed:visited, a.dimmed_text, a.dimmed_text:link, a.
 #region-pre a:hover { color: #857040; }
 #region-pre a:active { color: #fff; }
 
-
+/* table of content */
+#tableContents {
+	margin-bottom: 20px;
+}
+#tableContents li:before {
+	content: "\00BB  ";
+}
+#tableContents h4,
+#courseInfo .list-header h4 {
+	font-family: 'PT Sans Narrow', Tahoma, sans-serif;
+	font-size: 18px;
+	color: #857040;
+	border-bottom: 1px solid #7a6f3a;
+	line-height: 1.2;
+}
+#tableContents #tc {
+	font-family: 'Droid Serif', Georgia, serif;
+}
+#tableContents .list-header {
+	cursor: default;
+}
 
 #courseInfo .level-2 {
 	margin-bottom: 20px;
@@ -246,16 +256,15 @@ input + input {
 
 .editing .course-content .section li .mod-indent { border: 1px solid #fff; padding-left: 10px; }
 .editing .course-content .section li .edit-active,
-.editing .course-content .section li .mod-indent:hover {
+.editing .course-content .section li .mod-indent:hover,
+.editing #region-post .block .edit-active h2,
+.editing #region-post .block h2:hover {
 	background-color: #f7f7f7;
 	border: 1px solid #e5e5e5;
 	cursor: pointer;
 }
-.editing .course-content .section .right.side br { display: none; }
-
-/* edit mode - for when editMode() function is active */
-.edit-mode .course-content .section li .commands,
-.edit-mode #region-post  .block .commands {
+.editing .course-content .section li .commands,
+.editing #region-post  .block .commands {
 	background: #f7f7f7;
 	padding: 2px;
 	border: 1px solid #e5e5e5;
@@ -265,7 +274,7 @@ input + input {
 	right: 0;
 	z-index: 99999;
 }
-.edit-mode .course-content .section li .commands a {
+.editing .course-content .section li .commands a {
 	display: block;
 	border-color: #e5e5e5;
 }
@@ -277,9 +286,8 @@ input + input {
 .editing .course-content .section li .mod-indent .edit-toggle {
 	position: absolute;
 	right: 5px;
-	top: 3px;
+	top: 0;
 	color: #777 !important;
-	font-size: 10px;
 }
 
 .editing .course-content .section li .mod-indent .move {
@@ -300,12 +308,12 @@ section_add_menus .horizontal div,
 }
 
 .button.edit-summary {
-	margin: 3px 0 10px 0;
-	padding: 8px 6px 3px;
+	margin: 10px 0;
+	margin-top: 3px;
+	padding: 6px;
 	display: inline-block;
 	font-size: 13px;
 	line-height: 1;
-	text-decoration: none;
 	font-family: "PT Sans Narrow", Verdana, sans-serif;
 }
 .button.edit-summary:visited {

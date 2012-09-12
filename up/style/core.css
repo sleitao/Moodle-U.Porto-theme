@@ -2,7 +2,14 @@
 .skip-block {
 	display: none;
 }
+/* remove all <br> */
+/*
+ br { display: none !important; }
+ */
 
+
+/* to be fixed... */
+/*.notloggedin .logininfo { display: none; }*/
 
 .clearfloat,
 .clearer, .clearfix {
@@ -15,13 +22,16 @@ th, td {
 	border: none;
 }
 
+::-moz-selection { background: #DEC38F; }
+::selection { background: #DEC38F; }
+
 /* course links*/
 a { color: #857040; }
 a:visited { color: #7a6f3a; }
 a:hover { color: #444; }
 a:active {
 	color: #fff;
-	background: #444;
+	background: #857040;
 }
 
 ul ul {
@@ -37,6 +47,10 @@ ul ul {
 
 /* ===== GLOBAL ===== */
 
+a.dimmed, a.dimmed:link, a.dimmed:visited, a.dimmed_text, a.dimmed_text:link, a.dimmed_text:visited, .dimmed_text, .dimmed_text a, .dimmed_text a:link, .dimmed_text a:visited, .usersuspended, .usersuspended a, .usersuspended a:link, .usersuspended a:visited, .dimmed_category, .dimmed_category a {
+    text-decoration: line-through;
+}
+
 .region-content pre {
 	background:inherit;
 	border: 1px solid #d7d7d7;
@@ -44,9 +58,7 @@ ul ul {
 	padding: 5px;
 	overflow: auto;
 }
-.region-content a {
-  text-decoration: underline;
-}
+
 .error {
 	color: #fff;
 	background: #A62A16;
@@ -116,6 +128,9 @@ input[type=submit], button, input[type=button], .button {
 	-webkit-transition: color 0.5s ease;
 	transition: color 0.5s ease;
 	margin: 0;
+}
+
+input[type=submit]:visited, button:visited, input[type=button]:visited, .button:visited {
 }
 input[type=submit]:hover, button:hover, input[type=button]:hover, .button:hover {
 	color: #444;
@@ -296,7 +311,7 @@ th, td, tr {
 /*.userenrolment .col_lastseen { min-width: 70px; }*/
 /*.userenrolment .col_enrol { min-width: 120px; }*/
 .userenrolment .col_group .group { padding-left: 0; margin-left: 0; }
-
+.userenrolment .subheading_idnumber { display:block; }
 
 .enrolpanel { background: transparent; }
 
@@ -308,14 +323,14 @@ th, td, tr {
 	border-bottom: 2px solid #444;
 }
 .path-mod-forum .forumheaderlist a { border: none; }
-/* .path-mod-forum .forumheaderlist a:visited { color: #857040; } */
+.path-mod-forum .forumheaderlist a:visited { color: #857040; }
 .path-mod-forum .forumheaderlist a:hover {
 	background: none;
 	color: #444;
 }
 .path-mod-forum .forumheaderlist a:active {
-/* 	background: #444 ; */
-/* 	color: #fff; */
+	background: #857040 ;
+	color: #fff;
 }
 .path-mod-forum .forumheaderlist .replies,
 .path-mod-forum .forumheaderlist .discussion .author,
@@ -366,7 +381,7 @@ th, td, tr {
 }
 .forumpost {
 	border: none;
-	border-top: 2px solid #666;
+	border-top: 2px solid #7a6f3a;
 	border-bottom: 1px solid #fdfcfa;
 	margin: 0;
 }
@@ -411,7 +426,6 @@ th, td, tr {
 
 .tabtree .tabrow0 li a {
 	border: 1px solid #E5E5E5;
-	text-decoration: none;
 	padding: 5px;
 	background: #f7f7f7;
 	color: #777;
@@ -543,7 +557,7 @@ th, td, tr {
 #megamenu .sub {
 	position: absolute;
 	background: #40361f;
-	z-index: 99999;
+	z-index: 9999;
 /*	padding: 0 0 5px;*/
 	border-bottom: 2px solid #857040;
 	margin-top: 2px;
@@ -576,8 +590,8 @@ th, td, tr {
 }
 #megamenu .sub .contains_branch ul {
 	background: #473C22;
-	border-top: 1px solid #333;
-	border-bottom: 1px solid #333;
+	border-top: 1px solid #524627;
+	border-bottom: 1px solid #524627;
 }
 #megamenu .sub .contains_branch ul:hover {
 /*	content: "";*/
@@ -595,12 +609,12 @@ th, td, tr {
 	margin: 0 5px;
 	cursor: pointer;
 }
-#megamenu .sub .contains_branch > .branch:after {
+#megamenu .sub .contains_branch .branch:after {
 	content: ' ▾';
 	font-size: 10px;
 	padding-left: 5px;
 }
-#megamenu .sub .active-submenu >.branch:after {
+#megamenu .sub .active-submenu .branch:after {
 	content: ' ▴';
 	font-size: 10px;
 	padding-left: 5px;
@@ -642,7 +656,6 @@ th, td, tr {
 	display: block;
 	padding: 0 5px;
 }
-#megamenu .settings .contains_branch:hover,
 #megamenu .courses .sub .type_course .branch a:hover {
 	background: #57492a;
 }
@@ -657,32 +670,6 @@ th, td, tr {
 #megamenu .sub .contains_branch.type_activity .branch a {
 	display: block;
 }
-#megamenu .settings .contains_branch li { color: #fff; }
-#megamenu .settings .contains_branch .active-submenu {
-	border-top: 1px solid #555;
-	border-bottom: 1px solid #555;
-}
-#megamenu .settings .contains_branch .active-submenu .active-submenu { border: none; }
-#megamenu .settings .contains_branch .contains_branch .branch { font-size: 13px; }
-#megamenu .settings .contains_branch .contains_branch .contains_branch .tree_item { margin: 0; }
-#megamenu .settings .contains_branch .active-submenu .tree_item a {
-	padding-left: 15px;
-}
-#megamenu .settings .contains_branch .contains_branch .active-submenu ul .tree_item a {
-	padding-left: 25px;
-}
-#megamenu .settings .contains_branch ul a { padding: 0 }
-
-#megamenu .settings .sub > .type_setting > .contains_branch > p a,
-#megamenu .settings .sub > .type_setting > ul > li > p a {
-	padding-left: 5px;
-	margin: 0;
-}
-
-
-#megamenu .settings hr { display: none; }
-#megamenu .settings .contains_branch ul { border: none; }
-
 .tree_item span {
 	padding: 0;
 }
@@ -693,14 +680,11 @@ th, td, tr {
 .mform fieldset {
 	border: none;
 }
-.mform fieldset div {
-  margin: 0;
-}
 .mform fieldset.clearfix {
-	border-bottom: 2px solid #666;
+	border-bottom: 2px solid #7a6f3a;
 }
 .mform fieldset.clearfix  legend {
-/* 	border-bottom: 1px solid #fdfcfa; */
+	border-bottom: 1px solid #fdfcfa;
 	margin: 0 10px 10px 0;
 	float: left;
 	width: 100%;
@@ -740,7 +724,7 @@ th, td, tr {
 	max-width: 675px;
 }
 .mform fieldset.clearfix .required .fitemtitle {
-	color: #444;
+	color: #857040;
 }
 
 .mform .felement label {
@@ -751,7 +735,7 @@ span.hide, div.hide {
 }
 
 .mform img.iconhelp {
-	margin: 0 0 0 5px;
+	margin-right: 0;
 }
 /* submit */
 .mform fieldset .advancedbutton {
@@ -952,11 +936,6 @@ overflow-x: auto;
 #page-mod-data-edit form div .generalbox.boxaligncenter.boxwidthwide {
 	width: 100%;
 	overflow: auto;
-}
-
-.mceIframeContainer iframe {
-	max-width: 500px;
-	width: 500px;
 }
 /* ===== WIKI ===== */
 
@@ -1229,8 +1208,7 @@ table#user-grades .userpic {
 }
 .continuebutton {
 	width: 300px;
-	margin: 0 auto;
-	padding-left: 15px;
+	margin: 10px auto 0;
 }
 .continuebutton a {
 	color: #666;
@@ -1351,25 +1329,4 @@ table#user-grades .userpic {
 }
 #page-mod-choice-report .region-content .reportoption:first-child {
 	padding-left: 0;
-}
-
-/* ===== Kubric ====== */
-
-.gradingform_rubric.evaluate .criterion .levels .level:hover {
-	background: #b5dfb5;
-}
-.gradingform_rubric .criterion .levels {
-	padding: 1px 0;
-}
-
-.gradingform_rubric.editor .addlevel input,
-.gradingform_rubric.editor .addcriterion input {
-	line-height: 1.2;
-}
-.gradingform_rubric .criterion .levels .level .level-wrapper {
-	min-width: 60px;
-}
-.gradingform_rubric .criterion .levels .level .score {
-	font-family: "PT Sans Narrow";
-	font-style: normal;
 }
