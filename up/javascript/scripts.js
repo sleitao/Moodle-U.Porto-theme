@@ -46,7 +46,7 @@ function customMenu() {
 	var content = '';
 
 	//hide default block
-	$('.block_navigation').hide();
+	$('.block_navigation').hide().next().next().hide();
 	if (settingsHeader)
 	 	$('.block_settings').hide();
 
@@ -282,13 +282,13 @@ function settingsMenu(){
 	var settingsName = $('.block_settings .header .title h2').html()
 	var settings = $('.block_settings');
 
-	//remove skip-blocks
-	settings.next().remove();
-	settings.prev().remove();
-
 	$('.header', settings).remove();
 	$('.footer', settings).remove();
 
+	// 	remove drag target if moving is active
+	if ( $('body').hasClass('blocks-moving') ) {
+	 	$('.block_settings').next().next().hide();;
+	}
 	$('#region-main-wrap').append(settings);
 
 }
