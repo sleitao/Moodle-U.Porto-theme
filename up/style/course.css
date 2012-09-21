@@ -192,7 +192,10 @@
 
 .resourcecontent img { max-width: 100%; }
 
-
+.course-content .section .content .label p {
+    margin: 0;
+    padding: 0;
+}
 
 
 
