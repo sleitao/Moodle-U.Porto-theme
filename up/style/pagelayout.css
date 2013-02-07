@@ -532,6 +532,7 @@ padding: 10px;
 
 #region-main-wrap .block_settings .block_tree > li > ul {
 	padding: 0;
+        word-wrap: break-word;
 }
 #region-main-wrap .block_settings ul li:last-child {
 	margin-bottom: 10px;
@@ -617,29 +618,31 @@ padding: 10px;
 	float: right;
 	border-radius: 2px;
 }
-.region-content .welcome h2 {
+.region-content .welcome p {
 	font: bold 44px "PT Sans Narrow", Verdana, sans-serif;
 	text-transform: uppercase;
 	margin: 40px 0 20px 15px;
 	line-height: 1.1;
 	width: 430px;
 	}
-.region-content .welcome h2.white {
+.region-content .welcome p.white {
 	color: white;
 }
 .region-content .welcome h2.black {
         color: black;
 }
-.region-content .welcome h3 {
+.region-content .welcome p.subtitulo {
 	font-size: 20px;
-	margin: 0;
+	margin: 0 0 10px 15px;
+        text-transform: none;
 	width: 400px;
-	margin-bottom: 10px;
-        margin-left: 15px;
+        line-height: 1.6em;
+        font-family: Georgia, serif;
 }
-.region-content .welcome h3 a span {
+.region-content .welcome p.subtitulo a span {
         background-color: white;
         padding: 0 2px;
+        font-weight: bold;
 }
 
 .region-content .welcome h3.white {
@@ -662,10 +665,10 @@ padding: 10px;
 	text-decoration: underline;
 }
 
-.pagelayout-frontpage .frontbloc h4 {
+.pagelayout-frontpage .frontbloc h2 {
 	font: normal 20px "PT Sans Narrow", Verdana, sans-serif;
 	text-transform: uppercase;
-	margin-bottom: 10px;
+	margin: 0 0 10px;
 }
 .pagelayout-frontpage .highlight {
 	min-height: 100px;
@@ -730,9 +733,10 @@ padding: 10px;
 .footer-item:last-child {
 	margin-right: 0;
 }
-.footer-item h5 {
+.footer-item h3 {
 	font: normal 20px "PT Sans Narrow", Verdana, sans-serif;
 	text-transform: uppercase;
+        margin: 0;
 }
 .footer-item ul {
 	margin: 0;
