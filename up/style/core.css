@@ -430,6 +430,7 @@ th, td, tr {
 	background: #f7f7f7;
 	color: #777;
 	border-radius: 2px 2px 0 0;
+        white-space: nowrap;
 }
 .tabtree .tabrow0 li a:hover {
 	background: #eee;
@@ -948,6 +949,10 @@ overflow-x: auto;
 
 /* ===== GRADE ===== */
 
+#page-grade-report-user-index table.user-grade td.feedbacktext {
+    font-size: 1em;
+}
+
 #page-grade-report-grader-index #page-content #region-main,
 #page-grade-edit-tree-index #page-content #region-main {
 /*	width: 1120px;*/
@@ -1220,6 +1225,10 @@ table#user-grades .userpic {
 	background: #eee;
 	border: 1px solid #ccc;
 	text-align: left;
+}
+
+#newmessageoverlay #usermessage {
+    max-width: 350px;
 }
 
 /* #page-admin-course-index */
