@@ -77,23 +77,23 @@ echo $OUTPUT->doctype() ?>
 					<div id="region-main">
 						<div class="region-content">
 <!--                         <?php echo core_renderer::MAIN_CONTENT_TOKEN ?> -->
-
+                             <span id="maincontent"></span> <!-- Acrescentado so para nao dar erro de validacao -->
 <!-- START OF HOMEPAGE CONTENT -->
-     <div class="welcome" style="background-image: url(http://moodle-testbed.up.pt/moodle2test/theme/image.php?theme=up&amp;image=welcome-ipad&amp;rev=483&amp;component=theme)">
-            <h2 class="white">Bem-vindo <br />ao Moodle U.Porto</h2>
-            <h3><a href="http://moodle2.up.pt/mod/page/view.php?id=5"><span>O sistema de gestão de aprendizagem</span><br /><span> da Universidade do Porto</span></a></h3>											
+     <div class="welcome" style="background-image: url(http://moodle.up.pt/theme/image.php?theme=up&amp;image=welcome-ipad&amp;rev=483&amp;component=theme)">
+            <p class="white">Bem-vindo <br />ao Moodle U.Porto</p>
+            <p class="subtitulo"><a href="http://moodle.up.pt/mod/page/view.php?id=763"><span>O sistema de gestão de aprendizagem</span><br /><span> da Universidade do Porto</span></a></p>											
         </div>
                         <div class="frontbloc-container">
 								<div class="frontbloc">
-									<h4>Como Aceder</h4>
-									<p> Siga os passos indicados na <a href="login/index.php">Pagina de login</a>. Mais informações no <a href="http://elearning.up.pt">portal de e-learning</a>, ou por email GATIUP/NTE [gatiup@reit.up.pt]</p>
+									<h2>Como Aceder</h2>
+									<p> Siga os passos indicados na <a href="login/index.php">página de login</a>. Mais informações no <a href="http://elearning.up.pt">portal de e-learning</a>, ou por email GATIUP/NTE [gatiup@reit.up.pt]</p>
 								</div>
 								<div class="frontbloc">
-									<h4>Cursos Online</h4>
-									<p>Consulte a <a href="https://sigarra.up.pt/up/web_base.gera_pagina?P_pagina=1000435">lista de cursos</a> disponíveis na plataforma Moodle U.PORTO! A Universidade do Porto disponibiliza um ambiente virtual de ensino para unidades curriculares e <a href="https://sigarra.up.pt/up/web_base.gera_pagina?P_pagina=1000419">cursos de formacao continua</a>.</p>
+									<h2>Cursos Online</h2>
+									<p>Consulte a <a href="https://sigarra.up.pt/up/web_base.gera_pagina?P_pagina=1000435">lista de cursos</a> disponíveis na plataforma Moodle U.PORTO! A Universidade do Porto disponibiliza um ambiente virtual de ensino para unidades curriculares e <a href="https://sigarra.up.pt/up/web_base.gera_pagina?P_pagina=1000419">cursos de formação contínua</a>.</p>
 								</div>
 								<div class="frontbloc">
-									<h4>Sobre Moodle U.Porto</h4>
+									<h2>Sobre Moodle U.Porto</h2>
 										<p>O Moodle U.PORTO apresenta novas funcionalidades, novos conceitos de utilização, numa interface mais acessível e intuitiva. Mais informações sobre o <a href="/mod/page/view.php?id=763">Moodle U.Porto</a>.</p>
 								</div>
 						</div>
@@ -135,7 +135,7 @@ echo $OUTPUT->doctype() ?>
 			<p>Tema gráfico criado por <a href="http://idd.fba.up.pt">idd.fba.up.pt</a></p>
 			</div>
 			<div class="footer-item help">
-				<h5>Ajuda</h5>
+				<h3>Ajuda</h3>
 				<ul>
 					<li><a href="https://sigarra.up.pt/up/web_base.gera_pagina?P_pagina=1000431">Suporte Moodle UP</a></li>
 					<li><a href="https://sigarra.up.pt/up/web_base.gera_pagina?P_pagina=18390">Manuais e Tutoriais UP</a></li>
@@ -145,7 +145,7 @@ echo $OUTPUT->doctype() ?>
 				</ul>
 			</div>
 			<div class="footer-item links">
-				<h5>Outros Sites</h5>
+				<h3>Outros Sites</h3>
 				<ul>
 					<li><a href="http://elearningcafe.up.pt">E-learning Café</a></li>
 					<li><a href="http://up.pt">Universidade do Porto</a></li>
