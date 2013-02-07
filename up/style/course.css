@@ -188,6 +188,9 @@
 	clear: both;
 	margin-bottom: 10px;
 }
+.path-course-view .section .summary {
+       line-height: 1.6;
+}
 .course-content .section .content .summary p:last-child { margin-bottom: 0; }
 
 .resourcecontent img { max-width: 100%; }
