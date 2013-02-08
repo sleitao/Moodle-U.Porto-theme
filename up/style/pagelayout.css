@@ -815,6 +815,9 @@ padding: 10px;
 	width: 80%;
 	padding-right: 20px;
 }
+#page-mod-scorm-player #page-content #region-main {
+        width: 100%;
+}
 #page-mod-assignment-submissions .block_settings,
 #page-mod-quiz-edit .block_settings,
 #page-grade-edit-tree-index .block_settings,
