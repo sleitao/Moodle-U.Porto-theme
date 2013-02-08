@@ -87,7 +87,7 @@ function customMenu() {
 		var menu = $('ul#menu');
 
 		//add the role and default state attributes (some were already added)
-			if( !$('body').is('[role]') ){ $('body').attr('role','application'); }
+			//if( !$('body').is('[role]') ){ $('body').attr('role','application'); }
 			//add role and class of menu
 			menu.attr({'role': 'menu'}).addClass('menu');
 			//set first node's tabindex to 0
