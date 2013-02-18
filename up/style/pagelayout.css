@@ -131,8 +131,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*  */
-/*
-.skiplinks,
+
+/*.skiplinks,
 #dock,
 .accesshide,
 .skip-block { display: none;}
@@ -794,7 +794,8 @@ padding: 10px;
 #page-mod-quiz-edit #page-content,
 #page-grade-edit-tree-index #page-content,
 #page-grade-report-grader-index #page-content,
-#page-mod-quiz-report #page-content {
+#page-mod-quiz-report #page-content, 
+#page-mod-attforblock-report #page-content{
 	min-width: 1140px;
 	width: 95%;
 }
@@ -803,7 +804,8 @@ padding: 10px;
 #page-mod-quiz-edit #page-content #region-main-wrap,
 #page-grade-edit-tree-index #page-content #region-main-wrap,
 #page-grade-report-grader-index #page-content #region-main-wrap,
-#page-mod-quiz-report #page-content #region-main-wrap {
+#page-mod-quiz-report #page-content #region-main-wrap,
+#page-mod-attforblock-report #page-content #region-main-wrap {
 	width: 100%;
 }
 
@@ -811,7 +813,8 @@ padding: 10px;
 #page-mod-quiz-edit #page-content #region-main,
 #page-grade-edit-tree-index #page-content #region-main,
 #page-grade-report-grader-index #page-content #region-main,
-#page-mod-quiz-report #page-content #region-main {
+#page-mod-quiz-report #page-content #region-main, 
+#page-mod-attforblock-report #page-content #region-main {
 	width: 80%;
 	padding-right: 20px;
 }
@@ -822,7 +825,8 @@ padding: 10px;
 #page-mod-quiz-edit .block_settings,
 #page-grade-edit-tree-index .block_settings,
 #page-grade-report-grader-index .block_settings,
-#page-mod-quiz-report .block_settings {
+#page-mod-quiz-report .block_settings,
+#page-mod-attforblock-report .block_settings {
 	width: 20%;
 	max-width: 220px;
 }
