@@ -19,7 +19,7 @@
 }
 #region-post  .block .header h2 {
 	margin: 0 0 10px 0;
-	font: normal 20px "PT Sans Narrow", Verdana, sans-serif;
+	font: normal 20px "PT Sans Narrow", "PT Sans Narrow S", Verdana, sans-serif;
 	border-radius: 2px;
 	text-transform: none;
 	line-height: 1.2;
