@@ -1151,7 +1151,7 @@ table#user-grades .userpic {
 	margin-right: 2%;
 }
 .region-content .coursebox h3 {
-	font-family: "PT Sans Narrow";
+	font-family: "PT Sans Narrow", "PT Sans Narrow S";
 	font-size: 1.3em;
 	margin-bottom: 0;
 	text-transform: uppercase;

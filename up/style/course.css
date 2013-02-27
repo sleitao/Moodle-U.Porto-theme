@@ -67,7 +67,7 @@
 	font-size: 20px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
-	font-family: "PT Sans Narrow", Verdana, sans-serif;
+	font-family: "PT Sans Narrow", "PT Sans Narrow S", Verdana, sans-serif;
 	margin: 0;
 }
 .region-content > h2.main { margin-bottom: 20px; }
